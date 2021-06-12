@@ -1,3 +1,24 @@
-<a href='mini_randombeats.html'>Mini Randombeats</a>
-<a href='randombattles.html'>randombattles</a>
-<a href='randombeats.html'>randombeats</a>
+<html>
+<head>
+        <meta charset="utf-8" />
+        <title>Halber Meter MaximalGewicht</title>
+        <link rel="stylesheet" href="/style.css">
+</head>
+<body class="hmmg">
+        <div id="rbe"></div>
+        <div id="mrb"></div>
+        <div id="rba"></div>
+        <script src="https://unpkg.com/marked"></script>
+        <script>
+                async function downloadMarkdown(url) {
+                        return marked(await (await fetch(url)).text())
+                }
+                async function update() {
+                        document.getElementById('rbe').innerHTML = await downloadMarkdown('randombeats.md');
+                        document.getElementById('mrb').innerHTML = await downloadMarkdown('mini_randombeats.md');
+                        document.getElementById('rba').innerHTML = await downloadMarkdown('randombattles.md');
+                }
+                update();
+        </script>
+</body>
+</html>

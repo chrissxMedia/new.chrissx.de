@@ -1,20 +1,37 @@
 @font-face {
         font-family: 'Minecraft';
         src: local('Minecraft'),
-        url('https://db.onlinewebfonts.com/t/6ab539c6fc2b21ff0b149b3d06d7f97c.woff') format('woff'),
-        url('https://db.onlinewebfonts.com/t/6ab539c6fc2b21ff0b149b3d06d7f97c.ttf') format('truetype'),
-        url('https://db.onlinewebfonts.com/t/6ab539c6fc2b21ff0b149b3d06d7f97c.svg') format('svg');
+        url('https://db.onlinewebfonts.com/t/6ab539c6fc2b21ff0b149b3d06d7f97c.woff') format('woff');
 }
 
-html, html * {
+@font-face {
+        font-family: 'Inter';
+        src: local('Inter'), url(https://fonts.gstatic.com/s/inter/v3/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff) format('woff');
+}
+
+html {
         color: #ffffff;
         background-color: #000000;
         font-family: 'Minecraft', monospace;
 }
-
-* {border-color: #555555 !important}
+* {border-color: #555555}
 cite, cite * {color: #029833 !important}
 :link, :link * {color: #8db2e5 !important}
 input, textarea {background-color: #333333 !important}
 a {background-color: rgba(255, 255, 255, 0.01) !important}
 :visited, :visited * {color: rgb(211, 138, 138) !important}
+
+.hmmg {
+        font-family: Inter;
+}
+
+.hmmg table {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ffffff;
+}
+
+.hmmg td {
+        display: table-cell;
+        vertical-align: inherit;
+}

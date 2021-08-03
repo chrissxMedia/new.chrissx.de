@@ -23,6 +23,7 @@ html {
         margin: 10px;
         padding: 10px;
         border: 1px solid #ffffff;
+        border-radius: 5px;
 }
 
 .hmmg td {

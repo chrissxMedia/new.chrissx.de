@@ -16,13 +16,13 @@
         <div id="rba"></div>
         <script src="https://unpkg.com/marked"></script>
         <script>
-                async function downloadMarkdown(url) {
-                        return marked(await (await fetch(url)).text())
+                async function downloadMarkdown(id, url) {
+                        document.getElementById(id).innerHTML = marked(await (await fetch(url)).text());
                 }
-                async function update() {
-                        document.getElementById('rbe').innerHTML = await downloadMarkdown('randombeats.md');
-                        document.getElementById('mrb').innerHTML = await downloadMarkdown('mini_randombeats.md');
-                        document.getElementById('rba').innerHTML = await downloadMarkdown('randombattles.md');
+                function update() {
+                        downloadMarkdown('rbe', 'randombeats.md');
+                        downloadMarkdown('mrb', 'mini_randombeats.md');
+                        downloadMarkdown('rba', 'randombattles.md');
                 }
                 update();
         </script>

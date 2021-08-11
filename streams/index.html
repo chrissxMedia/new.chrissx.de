@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Livestreams</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
+</head>
+<body class="hmmg">
+    <noscript class="cmred">This page needs JavaScript.</noscript>
+    <div id="streams"></div>
+    <script src="https://unpkg.com/marked"></script>
+    <script src="/lib.js"></script>
+    <script>downloadMarkdown('streams', 'streams.md');</script>
+</body>
+</html>

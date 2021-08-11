@@ -15,18 +15,15 @@ html {
 .transblue { color: #60d0ff; }
 .transpink { color: #ffb0c0; }
 
-.hmmg {
+table {
         font-family: Inter;
-}
-
-.hmmg table {
         margin: 10px;
         padding: 10px;
         border: 1px solid #ffffff;
         border-radius: 5px;
 }
 
-.hmmg td {
+td {
         display: table-cell;
         vertical-align: inherit;
 }

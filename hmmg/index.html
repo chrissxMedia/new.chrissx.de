@@ -1,30 +1,25 @@
 <html>
 <head>
-        <title>Halber Meter MaximalGewicht</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="theme-color" content="#000000">
-        <link rel="stylesheet" href="/style.css">
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-        <link rel="icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
-        <link rel="apple-touch-icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
+    <title>Halber Meter MaximalGewicht</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="250x250" href="/favicon.ico">
 </head>
 <body class="hmmg">
-        <noscript class="cmred">This page needs JavaScript.</noscript>
-        <div id="rbe"></div>
-        <div id="mrb"></div>
-        <div id="rba"></div>
-        <script src="https://unpkg.com/marked"></script>
-        <script>
-                async function downloadMarkdown(id, url) {
-                        document.getElementById(id).innerHTML = marked(await (await fetch(url)).text());
-                }
-                function update() {
-                        downloadMarkdown('rbe', 'randombeats.md');
-                        downloadMarkdown('mrb', 'mini_randombeats.md');
-                        downloadMarkdown('rba', 'randombattles.md');
-                }
-                update();
-        </script>
+    <noscript class="cmred">This page needs JavaScript.</noscript>
+    <div id="rbe"></div>
+    <div id="mrb"></div>
+    <div id="rba"></div>
+    <script src="https://unpkg.com/marked"></script>
+    <script src="/lib.js"></script>
+    <script>
+        downloadMarkdown('rbe', 'randombeats.md');
+        downloadMarkdown('mrb', 'mini_randombeats.md');
+        downloadMarkdown('rba', 'randombattles.md');
+    </script>
 </body>
 </html>

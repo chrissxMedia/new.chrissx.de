@@ -14,12 +14,10 @@
     <div id="rbe"></div>
     <div id="mrb"></div>
     <div id="rba"></div>
-    <script src="https://unpkg.com/marked"></script>
-    <script src="/lib.js"></script>
-    <script>
-        downloadMarkdown('rbe', 'randombeats.md');
-        downloadMarkdown('mrb', 'mini_randombeats.md');
-        downloadMarkdown('rba', 'randombattles.md');
-    </script>
+    <script src="/lib.js" onload="
+        downloadCsvTable('rbe', 'randombeats.csv');
+        downloadCsvTable('mrb', 'mini_randombeats.csv');
+        downloadCsvTable('rba', 'randombattles.csv');
+    "></script>
 </body>
 </html>

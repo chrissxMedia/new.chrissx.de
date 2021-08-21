@@ -12,8 +12,12 @@
 <body class="hmmg">
     <noscript class="cmred">This page needs JavaScript.</noscript>
     <div id="streams"></div>
-    <script src="https://unpkg.com/marked"></script>
-    <script src="/lib.js"></script>
-    <script>downloadMarkdown('streams', 'streams.md');</script>
+    <script src="/lib.js" onload="
+    (async function() {
+            const [headers, lines] = await fetchCsv('streams.csv');
+            lines.forEach(e => { e[4] = idsToHTML(e[4]); e[5] = idsToHTML(e[5]); });
+            renderTable('streams', headers, lines);
+    })();
+    "></script>
 </body>
 </html>

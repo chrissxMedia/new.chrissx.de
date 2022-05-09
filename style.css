@@ -18,8 +18,8 @@ header {
 * {border-color: #555555}
 :link, :visited { color: #aaaaaa; }
 
-.cmred { color: #c02020; }
-.cmpurple { color: #8020f0; }
+.cmred, .logo1 { color: #c02020; }
+.cmpurple, .logo2 { color: #8020f0; }
 .cmblack { color: #202020; }
 .transblue { color: #60d0ff; }
 .transpink { color: #ffb0c0; }
@@ -35,4 +35,36 @@ table {
 td {
         display: table-cell;
         vertical-align: inherit;
+}
+
+.logo1, .logo2 {
+        font-family: Minecraft, monospace;
+}
+
+.cbt, .cbt * {
+        font-family: Unifont, monospace;
+}
+
+.format {
+        list-style-type: none;
+}
+
+.format li:before {
+        content: "\25B6";
+        margin-left: -20px;
+        margin-right: 10px;
+}
+
+.pktlist {
+        list-style-type: none;
+}
+
+.pktlist li:before {
+        content: '+';
+        margin-left: -20px;
+        margin-right: 10px;
+}
+
+.res li:before {
+        content: '=';
 }

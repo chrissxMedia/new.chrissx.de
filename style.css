@@ -37,12 +37,12 @@ td {
         vertical-align: inherit;
 }
 
-.logo1, .logo2 {
+.logo1, .logo2, .cbt h2 {
         font-family: Minecraft, monospace;
 }
 
-.cbt, .cbt * {
-        font-family: Unifont, Minecraft, monospace;
+.cbt {
+        font-family: Unifont, monospace;
 }
 
 .format {
@@ -67,4 +67,8 @@ td {
 
 .res li:before {
         content: '=';
+}
+
+.nobr {
+        display: inline-block;
 }

@@ -57,6 +57,12 @@ td {
 
 .pktlist {
         list-style-type: none;
+        margin-bottom: 0;
+}
+
+.res {
+        list-style-type: none;
+        margin-top: 0;
 }
 
 .pktlist li:before {
@@ -67,6 +73,8 @@ td {
 
 .res li:before {
         content: '=';
+        margin-left: -20px;
+        margin-right: 10px;
 }
 
 .nobr {

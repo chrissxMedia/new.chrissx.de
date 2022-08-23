@@ -9,7 +9,7 @@ function elt(tag, html) {
         return e;
 }
 
-const idsToHTML = ids => ids.split(';').map(i => i.length > 0 ? `https://youtu.be/${i}` : i).reduce((x, y) => `${x}<br>${y}`);
+const idsToHTML = ids => ids.split(';').map(i => i ? `https://youtu.be/${i}` : i).reduce((x, y) => `${x}<br>${y}`);
 
 function makeTable(headers, lines) {
         lines = lines.map(e => e.map(c => c == 'y' ? '✅' : c == 'n' ? '❌' : c)
@@ -32,7 +32,7 @@ const renderTable = (id, headers, lines) => document.getElementById(id).appendCh
 
 async function fetchCsv(url) {
         const raw = await fetchText(url);
-        const lines = raw.split(/[\r\n]+/).filter(e => e.length > 0).map(e => e.split(','));
+        const lines = raw.split(/[\r\n]+/).filter(e => e).map(e => e.split(','));
         const headers = lines.splice(0, 1)[0];
         return [headers, lines];
 }

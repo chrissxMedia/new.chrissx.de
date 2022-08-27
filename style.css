@@ -19,7 +19,7 @@ h1 {
         margin: 0;
 }
 
-h3, h4 {
+.index h3, .index h4 {
         margin: 5px;
 }
 
@@ -45,7 +45,7 @@ td {
         vertical-align: inherit;
 }
 
-.logo1, .logo2, .cbt h2 {
+.logo1, .logo2, .cbt h2, .mc {
         font-family: Minecraft, monospace;
 }
 
@@ -88,3 +88,11 @@ td {
 .nobr {
         display: inline-block;
 }
+
+.policy1, .policy2 {
+        float: left;
+        width: 48%;
+}
+
+.policy1 { margin-right: 2%; }
+.policy2 { margin-left: 2%; }

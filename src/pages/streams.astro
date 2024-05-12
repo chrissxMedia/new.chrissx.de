@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Table from "../components/Table.astro";
+import { csv } from "../lib";
+import data from "../data/streams.csv?raw";
+
+const [headers, lines] = csv(data);
+
+const idsToHTML = (ids) =>
+    ids
+        .split(";")
+        .map((i) => i && `https://youtu.be/${i}`)
+        .reduce((x, y) => `${x}<br/>${y}`);
+
+lines.forEach((e) => {
+    e[4] = idsToHTML(e[4]);
+    e[5] = idsToHTML(e[5]);
+});
+---
+
+<Layout title="Livestreams">
+    <div id="streams">
+        <Table {headers} {lines} />
+    </div>
+</Layout>
+
+<style>
+    #streams :global(table) {
+        font-family: var(--unifont);
+    }
+</style>

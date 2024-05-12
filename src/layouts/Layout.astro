@@ -1,0 +1,48 @@
+---
+import { BaseLayout, CMText, Footer } from "cmdesigns";
+import favicon from "../favicon.png";
+
+export interface Props {
+    title: string;
+    lang?: string;
+}
+
+const { title, lang = "en" } = Astro.props;
+---
+
+<BaseLayout {lang} {favicon} {title} description="The official chrissx Media website">
+    <slot name="head" slot="head"/>
+    <header>
+        <h1><a href="/"><CMText /></a></h1><br/>
+        <a href="/hmmg">HMMG</a>&nbsp;<a href="/streams">Livestreams</a>&nbsp;<a href="//wiki.chrissx.de">Wiki</a>&nbsp;<a href="/shop">Merchandise</a>
+    </header>
+    <main>
+        <slot />
+        <Footer start={2018} />
+    </main>
+</BaseLayout>
+
+<style>
+    header {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+</style>
+
+<style is:global>
+    body {
+        font-family: var(--minecraft);
+        font-size: 18px;
+        padding-left: 20%;
+        padding-right: 20%;
+        /* TODO: width max(80%, min-content) */
+    }
+    h1 {
+        font-size: 40px;
+        margin: 0;
+    }
+    h1 a {
+        text-decoration: none;
+    }
+    :link, :visited { color: #aaaaaa; }
+</style>

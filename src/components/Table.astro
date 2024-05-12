@@ -1,0 +1,42 @@
+---
+export interface Props {
+    headers: string[];
+    lines: string[][];
+}
+
+const { headers, lines } = Astro.props;
+
+const emojify = (c: string) => (c == "y" ? "✅" : c == "n" ? "❌" : c);
+const linkify = (c: string) =>
+    c.startsWith("https://") ? `<a href="${c}">${c}</a>` : c;
+---
+
+<table>
+    <thead>
+        {headers.map((h) => <th>{h}</th>)}
+    </thead>
+    <tbody>
+        {
+            lines.map((l) => (
+                <tr>
+                    {l.map(emojify).map(linkify).map((x) => (<td set:html={x} />))}
+                </tr>
+            ))
+        }
+    </tbody>
+</table>
+
+<style>
+    table {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+    td {
+        display: table-cell;
+        vertical-align: inherit;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+</style>

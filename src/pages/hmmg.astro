@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Table from "../components/Table.astro";
+import { csv } from "../lib";
+import randombeats from "../data/randombeats.csv?raw";
+import miniRandombeats from "../data/mini_randombeats.csv?raw";
+import randombattles from "../data/randombattles.csv?raw";
+---
+
+<Layout title="Halber Meter MaximalGewicht" lang="de">
+    {
+        [randombeats, miniRandombeats, randombattles]
+            .map(csv)
+            .map(([headers, lines]) => <Table {headers} {lines} />)
+    }
+</Layout>
+
+<style is:global>
+    table {
+        font-family: var(--sans-serif);
+    }
+</style>

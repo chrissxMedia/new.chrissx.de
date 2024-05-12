@@ -1,0 +1,103 @@
+---
+import { CMText } from "cmdesigns";
+import Layout from "../layouts/Layout.astro";
+import TeX from "astro-tex";
+---
+
+<Layout title="chrissx BoZz/Battle Turnier" lang="de">
+    <div class="cbt">
+        <h1><span class="logo1">CBT&nbsp;</span><span class="logo2">2022</span></h1>
+        <p>Dieses Jahr gibt es endlich wieder ein CBT. Wurde ja auch Zeit.</p>
+        <p>Dazu auch gleich noch eine neue Staffel RandomRap und
+            die <CMText /> ist gerettet.</p>
+        <p>Die offizielle Ankündigung fand in Form&nbsp;<a href="https://youtu.be/J-CRjXMg_Gs">der ersten&nbsp;<span
+            class="logo1">C</span><span class="logo2">M</span><span class="logo1">P</span><span
+            class="logo2">K</span>&nbsp;statt</a>.</p>
+
+        <h2>Das Bewertungssystem</h2>
+        <ul class="pktlist">
+            <li class="pkt">2 Flow und Technik</li>
+            <li class="pkt">3 Punchlinedichte
+                (<TeX formula={"\\rho_a = \\frac{p_a}{n_a} + \\frac{p_a}{n_a + n_b};"+
+                "\\rho_b = \\frac{p_b}{n_b} + \\frac{p_b}{n_a + n_b}"} />)
+            </li>
+            <li class="pkt">2 Cypher/Musikalität/Extra</li>
+            <li class="pkt">1 Video</li>
+            <li class="pkt">1 Uservoting</li>
+            <li class="res">9 Punkte insgesamt</li>
+        </ul>
+
+        <h2>Abgabe</h2>
+        <ol>
+            <li>
+                <p>Erstmal sammeln wir unsere Dateien:</p>
+                <p>cbt_2022_quali_rapper42.zip (oder .7z, .tar.gz, .tar.xz, ...)</p>
+                <ul class="format">
+                    <li>cbt_2022_quali_rapper42.wav (Fertig gemischte Runde; FLAC/WAVE/ALAC/AIFF/AAC/Opus/MP3/…)</li>
+                    <li>cbt_2022_quali_rapper42_acapella.wav (Acapella; ungemischt; FLAC/WAVE/ALAC/AIFF/AAC/Opus/MP3/…)</li>
+                    <li>cbt_2022_quali_rapper42_instrumental.wav (Instrumental; FLAC/WAVE/ALAC/AIFF/AAC/Opus/MP3/…)</li>
+                    <li>cbt_2022_quali_rapper42.mp4 (Video; mp4/mov/…; H.264/H.265/VP8/VP9/AV1/…)</li>
+                    <li>cbt_2022_quali_rapper42.txt (Lyrics; UTF-8 plaintext)</li>
+                </ul>
+                <p>Wer die Lyrics als odt/docx oder keine Instrumental bzw. Acapella Versionen abgibt,
+                    bekommt Schläge vom gesamten Battleausschuss (wird allerdings nicht disqualifiziert).
+                </p>
+            </li>
+            <li>
+                <p>Lade die Datei(en) irgendwo im Internet hoch, wir empfehlen&nbsp;<a href="https://wetransfer.com">WeTransfer</a>.</p>
+                <img src="/cbt/1.png" alt='Wähle "Get transfer link" aus' />
+                <img src="/cbt/2.png" height="250px" alt='Lade die Datei(en) hoch und klicke auf "Get a link"' />
+            </li>
+            <li>
+                <p>Schicke uns den Link an&nbsp;<a href="mailto:cbt@chrissx.de">cbt@chrissx.de</a>,
+                    oder auch direkt an pixel🖤#9388 auf Discord. Verwende aber bitte PGP/GPG,
+                    um die Nachricht mit&nbsp;<a href="pub.asc">unserem Public Key</a>&nbsp;zu verschlüsseln,
+                    und benutze auch bitte immer den gleichen Key, um deine Nachrichten zu signieren.</p>
+            </li>
+        </ol>
+
+        <h2>Die Qualifikationen im Speziellen</h2>
+        <p>Gib deine Qualifikation bis zum 15. Juni 2022&nbsp;<span
+            class="nobr">(2022-06-14T23:59:59+02:00)</span>&nbsp;ab und schon bist du dabei! Danach ist
+            nur noch zum Betreten des <a href="/discord"><CMText /> Discord-Servers</a>&nbsp;zu raten.</p>
+        <p>Nach Ende der Qualifikationsfrist runden wir die Anzahl der korrekt eingereichten Qualifikationen
+            auf die nächste 2er-Potenz ab und nehmen dann diese Anzahl an Teilnehmern rein, natürlich nach
+            dem oben beschriebenen Bewertungssystem.</p>
+    </div>
+</Layout>
+
+<style>
+    .pktlist, .format {
+        list-style-type: none;
+    }
+    li.pkt:before, li.res:before, .format li:before {
+        margin-left: -20px;
+        margin-right: 10px;
+    }
+    li.pkt:before {
+        content: '+';
+    }
+    li.res:before {
+        content: '=';
+    }
+    .format li:before {
+        content: "\25B6";
+    }
+    .nobr {
+        display: inline-block;
+    }
+    .cbt, a {
+        font-family: var(--unifont);
+    }
+    .logo1 {
+        color: rgb(var(--cmred));
+        font-family: var(--minecraft);
+    }
+    .logo2 {
+        color: rgb(var(--cmpurple));
+        font-family: var(--minecraft);
+    }
+    h2 {
+        font-family: var(--minecraft);
+    }
+</style>

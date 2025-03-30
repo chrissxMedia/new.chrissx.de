@@ -1,0 +1,32 @@
+---
+import { Octokit } from "@octokit/rest";
+import Layout from "../../layouts/Layout.astro";
+
+const octokit = new Octokit();
+const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
+    org: "chrissxMedia",
+    type: "public",
+    per_page: undefined,
+});
+---
+
+<Layout title="Repos Experiment">
+    <ul>
+        {
+            repos.map((repo) => (
+                <li>
+                    <a href={repo.html_url}>{repo.name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</Layout>
+
+<style>
+    ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+</style>

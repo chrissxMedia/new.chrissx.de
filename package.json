@@ -8,6 +8,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@octokit/rest": "^20.1.1",
     "astro": "^4.0.0",
     "astro-tex": "^0.2.0",
     "cmdesigns": "^0.1.0"

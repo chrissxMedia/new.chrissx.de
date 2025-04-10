@@ -13,8 +13,12 @@ const { title, lang = "en" } = Astro.props;
 <BaseLayout {lang} {favicon} {title} description="The official chrissx Media website">
     <slot name="head" slot="head"/>
     <header>
-        <h1><a href="/"><CMText /></a></h1><br/>
-        <a href="/hmmg">HMMG</a>&nbsp;<a href="/streams">Livestreams</a>&nbsp;<a href="//wiki.chrissx.de">Wiki</a>&nbsp;<a href="/shop">Merchandise</a>
+        <h1><a href="/"><CMText /></a></h1>
+        <nav>
+            <a href="/hmmg">HMMG</a>
+            <a href="/streams">Livestreams</a>
+            <!--<a href="/shop">Merchandise</a>-->
+        </nav>
     </header>
     <main>
         <slot />
@@ -25,7 +29,7 @@ const { title, lang = "en" } = Astro.props;
 <style>
     header {
         text-align: center;
-        padding-bottom: 20px;
+        padding-bottom: 1em;
     }
 </style>
 
@@ -40,9 +44,16 @@ const { title, lang = "en" } = Astro.props;
     h1 {
         font-size: 40px;
         margin: 0;
+        margin-bottom: 0.25em;
     }
     h1 a {
         text-decoration: none;
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5em;
     }
     :link, :visited { color: #aaaaaa; }
 </style>

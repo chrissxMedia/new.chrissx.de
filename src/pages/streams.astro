@@ -6,7 +6,7 @@ import data from "../data/streams.csv?raw";
 
 const [headers, lines] = csv(data);
 
-const idsToHTML = (ids) =>
+const idsToHTML = (ids: string) =>
     ids
         .split(";")
         .map((i) => i && `https://youtu.be/${i}`)
@@ -25,7 +25,9 @@ lines.forEach((e) => {
 </Layout>
 
 <style>
-    #streams :global(table) {
+    #streams {
         font-family: var(--unifont);
+        width: max-content;
+        margin: 0 auto;
     }
 </style>

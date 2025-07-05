@@ -1,1 +1,4 @@
+.dart_tool/
+.astro/
 dist/
+node_modules/

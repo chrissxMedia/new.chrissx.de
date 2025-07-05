@@ -10,8 +10,14 @@ export interface Props {
 const { title, lang = "en" } = Astro.props;
 ---
 
-<BaseLayout {lang} {favicon} {title} description="The official chrissx Media website">
-    <slot name="head" slot="head"/>
+<BaseLayout
+    {lang}
+    {favicon}
+    {title}
+    description="The official chrissx Media website"
+    themecolor="#000000"
+>
+    <slot name="head" slot="head" />
     <header>
         <h1><a href="/"><CMText /></a></h1>
         <nav>
@@ -55,5 +61,8 @@ const { title, lang = "en" } = Astro.props;
         justify-content: center;
         gap: 0.5em;
     }
-    :link, :visited { color: #aaaaaa; }
+    :link,
+    :visited {
+        color: #aaaaaa;
+    }
 </style>

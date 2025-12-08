@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^21.0.0",
-    "astro": "^5.13.2",
+    "astro": "^5.16.4",
     "astro-tex": "^0.2.0",
     "cmdesigns": "^0.1.0"
   }

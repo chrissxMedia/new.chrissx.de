@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Notices from "../data/notices.md";
 ---
 
 <Layout title="chrissx Media">
@@ -21,11 +22,25 @@ import Layout from "../layouts/Layout.astro";
     <a href="//youtube.com/@pixeleng">Pixel Engineering</a><br />
     <a href="//youtube.com/@chrissxReuploads">chrissx Reuploads</a><br />
     <a href="//youtube.com/@twinkspotting">Twinkspotting</a><br />
+
+    <br/><br/>
+
+    <div class="notices">
+        <h2 id="notices">Notices (upcoming changes and maintenance)</h3>
+        <Notices />
+    </div>
 </Layout>
 
-<style>
+<style is:global>
+    h2,
     h3,
     h4 {
-        margin: 5px 0;
+        margin: 0.25em 0;
+    }
+    .notices * {
+        font-family: var(--sans-serif);
+    }
+    .notices code {
+        font-family: var(--unifont);
     }
 </style>

@@ -20,9 +20,11 @@ Additionally, the following third party websites hosted by us will also be affec
 - zerm.eu / zerm.link
 - emilycatgirl.de
 
-We are currently in the process of setting up the new server. During the migration, the DNS entries will gradually be switched over, while we carefully monitor for any breakage.
+We are currently in the process of setting up the new server. During the migration, the DNS entries will be gradually switched over, while we carefully monitor for any breakage.
 
 A few days after the migration, in February, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
+
+---
 
 ### Deprecation and upcoming removal of abandoned websites and Gopher protocol support (Jan 2026)
 
@@ -36,6 +38,14 @@ To optimize our deployment processes going forward and reduce unnecessary resour
 
 For the same reasons, as well as focusing our development efforts, [the tech demo that we call our Gopher site](https://github.com/chrissxMedia/chrissx.de-70) will gradually become unavailable after 2026-01-23. The archive will also remain public on GitHub.
 
+---
+
 ### Upcoming maintenance in Rosenhof (Feb 2026)
 
 For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance in early February, and will update this notice with a more detailed timeline as we continue planning.
+
+---
+
+### Deprecation and upcoming archival of the ludwig Docker image (pygopherd, Mar 2026)
+
+To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-31. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).

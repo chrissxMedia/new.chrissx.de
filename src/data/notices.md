@@ -22,7 +22,7 @@ Additionally, the following third party websites hosted by us will also be affec
 
 We are currently in the process of setting up the new server. During the migration, the DNS entries will be gradually switched over, while we carefully monitor for any breakage.
 
-A few days after the migration, in February, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
+At least a few days after the migration, after 2026-02-07, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
 
 ---
 
@@ -46,6 +46,20 @@ For internal reasons, including but not limited to cleaning and battery replacem
 
 ---
 
+### Upcoming removal of unused subdomains (Feb 2026)
+
+The following subdomains have not been used in years:
+
+- ftp.chrissx.de
+- get.cpm.chrissx.de
+- mc.chrissx.de
+- pad.chrissx.de
+- penis.chrissx.de
+
+We intend to remove their DNS entries after 2026-02-06, at least one day before the shutdown of `sophia`.
+
+---
+
 ### Deprecation and upcoming archival of the ludwig Docker image (pygopherd, Mar 2026)
 
-To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-31. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).
+To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-28. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).

@@ -1,6 +1,6 @@
 ### ⚠️ Upcoming large-scale maintenance/migration (late Jan 2026)
 
-We are currently planning to migrate all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. This migration will take place after 2026-01-25 and we will update this notice with an exact date and time as we continue planning.
+We are currently planning to migrate all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. This migration is scheduled to take place on 2026-01-26 between 3:00 and 11:00 (AM) UTC (4:00-12:00 CET). A timeline can be found below.
 
 The following list of chrissx Media websites and services will be affected:
 
@@ -20,11 +20,37 @@ Additionally, the following third party websites hosted by us will also be affec
 - zerm.eu / zerm.link
 - emilycatgirl.de
 
-We are currently in the process of setting up and testing the new server. During the migration, DNS entries will be gradually switched over, while we carefully monitor for any breakage.
-
 At least a few days after the migration, after 2026-02-07, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
 
-The final shutdown of `sophia` might be significantly delayed by the pending migration of the Discord bots `jana` and Inspiriererin (insp8n for short). Their migration will be announced at a very short notice.
+#### Planned Timeline
+
+We will update this timeline with rough times in the hours leading up to the migration. We will carefully monitor for breakage between each step.
+
+- (2026-01-25) `ruby` setup, incl. complete testing
+- DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
+- DNS switchover of `erwin.chrissx.de`
+- DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
+- DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
+- DNS switchover of all remaining domains
+- `sophia` traffic decreases to an insignificant amount
+- `bottom.kinkcheck.top` removal from `sophia`
+- `deployment`, `watchtower` removal from `sophia`
+- `kinkcheck.top` removal from `sophia`
+- `jasmin` removal from `sophia`
+- (before 2026-02-01) Significant reduction of `sophia`'s `nginx` configuration
+- Migration of Discord bots (see below)
+- (after 2026-02-07) Final Shutdown of `sophia`
+
+The final shutdown of `sophia` might be significantly delayed by the pending migration of the Discord bots `jana` and Inspiriererin (insp8n for short). Their migration has not been planned yet and will be announced at a very short notice.
+
+It has not been decided yet when the IP addresses assigned to `sophia` will be given away. We will hold onto them until at least 2026-02-20 to mitigate any confusion arising from their reuse by a third party.
+
+#### Semi-Live Updates
+
+Times are given in 24-hour CET, unless noted otherwise.
+
+- (2026-01-25 12:15) All services are up-and-running. Testing will be conducted later today.
+- (2026-01-25 10:45) After 4 test installations, we have arrived at a concise and stable setup. The new server `ruby`, located in Falkenstein, will be set up during the next few hours.
 
 ---
 
@@ -36,15 +62,15 @@ The following websites have not been updated for five years, are partially broke
 - [ampless.chrissx.de](https://github.com/Ampless/ampless.chrissx.de)
 - [amplus.chrissx.de](https://github.com/Amplus2/amplus.chrissx.de)
 
-To optimize our deployment processes going forward and reduce unnecessary resource consumption we will remove the content hosted on these sites from our servers in the next few days (after 2026-01-21). The corresponding DNS entries will also be removed soon, at least one day before the final shutdown of `sophia` (after 2026-01-22). The code will remain available in the form of public archives on GitHub.
+To optimize our deployment processes going forward and reduce unnecessary resource consumption, these websites and their corresponding DNS entries have been removed on 2026-01-25. The code will remain available in the form of public archives on GitHub.
 
-For the same reasons, as well as focusing our development efforts, [the tech demo that we call our Gopher site](https://github.com/chrissxMedia/chrissx.de-70) will gradually become unavailable soon (after 2026-01-23). The archive will also remain public on GitHub.
+For the same reasons, as well as focusing our development efforts, [the tech demo that we call our Gopher site](https://github.com/chrissxMedia/chrissx.de-70) was taken down on 2026-01-25. The archive will also remain public on GitHub.
 
 ---
 
 ### Upcoming maintenance in Rosenhof (Feb 2026)
 
-For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance between 2026-02-01 and 2026-02-05, and will update this notice with a more detailed timeline as we continue planning.
+For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance between 2026-02-01 and 2026-02-10, and will update this notice with a more detailed timeline as we continue planning.
 
 ---
 
@@ -58,7 +84,7 @@ The following subdomains have not been used in years:
 - pad.chrissx.de
 - penis.chrissx.de
 
-We intend to remove their DNS entries after 2026-02-06, at least one day before the final shutdown of `sophia`.
+We intend to remove their DNS entries after 2026-02-01, at least one day before the final shutdown of `sophia`.
 
 ---
 

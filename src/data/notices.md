@@ -1,6 +1,6 @@
 ### ⚠️ Upcoming large-scale maintenance/migration (late Jan 2026)
 
-We are currently planning to migrate all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. This migration is scheduled to take place on 2026-01-26 between 3:00 and 11:00 (AM) UTC (4:00-12:00 CET). A timeline can be found below.
+We are currently planning to migrate all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. This migration is scheduled to take place on 2026-01-26 between 3:00 and 5:00 (AM) UTC (4:00-6:00 CET). A timeline can be found below.
 
 The following list of chrissx Media websites and services will be affected:
 
@@ -22,24 +22,24 @@ Additionally, the following third party websites hosted by us will also be affec
 
 At least a few days after the migration, after 2026-02-07, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
 
-#### Planned Timeline
+#### Detailed Timeline
 
-We will update this timeline with rough times in the hours leading up to the migration. We will carefully monitor for breakage between each step.
+We will carefully monitor for breakage after each step. All times are 24-hour UTC.
 
-- (2026-01-25) `ruby` setup, incl. complete testing
-- DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
-- DNS switchover of `erwin.chrissx.de`
-- DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
-- DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
-- DNS switchover of all remaining domains
-- `sophia` traffic decreases to an insignificant amount
-- `bottom.kinkcheck.top` removal from `sophia`
-- `deployment`, `watchtower` removal from `sophia`
-- `kinkcheck.top` removal from `sophia`
-- `jasmin` removal from `sophia`
-- (before 2026-02-01) Significant reduction of `sophia`'s `nginx` configuration
-- Migration of Discord bots (see below)
-- (after 2026-02-07) Final Shutdown of `sophia`
+- [x] (2026-01-25) `ruby` setup, incl. complete testing
+- [ ] (2026-01-26 3:00) DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
+- [ ] (2026-01-26 3:20) DNS switchover of `erwin.chrissx.de`
+- [ ] (2026-01-26 3:30) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
+- [ ] (2026-01-26 3:40) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
+- [ ] (2026-01-26 4:00) DNS switchover of all remaining domains
+- [ ] `sophia` traffic decreases to an insignificant amount
+- [ ] (before 2026-02-01) `bottom.kinkcheck.top` removal from `sophia`
+- [ ] (before 2026-02-01) `deployment`, `watchtower` removal from `sophia`
+- [ ] (before 2026-02-01) `kinkcheck.top` removal from `sophia`
+- [ ] (before 2026-02-01) `jasmin` removal from `sophia`
+- [ ] (before 2026-02-01) Significant reduction of `sophia`'s `nginx` configuration
+- [ ] Migration of Discord bots (see below)
+- [ ] (after 2026-02-07) Final Shutdown of `sophia`
 
 The final shutdown of `sophia` might be significantly delayed by the pending migration of the Discord bots `jana` and Inspiriererin (insp8n for short). Their migration has not been planned yet and will be announced at a very short notice.
 
@@ -49,6 +49,7 @@ It has not been decided yet when the IP addresses assigned to `sophia` will be g
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-25 21:45) All services are working correctly.
 - (2026-01-25 12:15) All services are up-and-running. Testing will be conducted later today.
 - (2026-01-25 10:45) After 4 test installations, we have arrived at a concise and stable setup. The new server `ruby`, located in Falkenstein, will be set up during the next few hours.
 

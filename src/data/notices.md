@@ -29,7 +29,7 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] (2026-01-25) `ruby` setup, incl. complete testing
 - [x] (2026-01-26 3:00) DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
 - [x] (2026-01-26 3:15) DNS switchover of `erwin.chrissx.de`
-- [ ] (2026-01-26 3:20) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
+- [x] (2026-01-26 3:20) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
 - [ ] (2026-01-26 3:30) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
 - [ ] (2026-01-26 3:40) DNS switchover of all remaining domains
 - [ ] `sophia` traffic decreases to an insignificant amount
@@ -49,6 +49,9 @@ It has not been decided yet when the IP addresses assigned to `sophia` will be g
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-26 04:36) successful switchover and verification completed: `zerm.link`
+- (2026-01-26 04:30) switchover and verification completed: `emilycatgirl.de`. Chromium shows a security warning that we will investigate later (possible rollback)
+- (2026-01-26 04:25) successful switchover and verification completed: `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
 - (2026-01-26 04:14) successful switchover and verification completed: `erwin.chrissx.de`
 - (2026-01-26 04:05) successful switchover and verification completed: `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
 - (2026-01-26 03:59) `chrisxeric.de` has been fully verified to work while accessing it through `ruby` (a test image is not available, which is expected)

@@ -1,8 +1,8 @@
-### ⚠️ Upcoming large-scale maintenance/migration (late Jan 2026)
+### Large-scale maintenance/migration (late Jan 2026, almost done)
 
-We are currently planning to migrate all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. This migration is scheduled to take place on 2026-01-26 between 3:00 and 5:00 (AM) UTC (4:00-6:00 CET). A timeline can be found below.
+We are currently migrating all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. Most of the migration has taken place on 2026-01-26 between 3:00 and 4:00 (AM) UTC (4:00-5:00 CET). A detailed timeline can be found below.
 
-The following list of chrissx Media websites and services will be affected:
+The following list of chrissx Media websites and services are affected:
 
 - chrissx.de
 - fuxgames.com
@@ -15,7 +15,7 @@ The following list of chrissx Media websites and services will be affected:
 - gock.dev / pixel.chrissx.de
 - elonisnwichser.de
 
-Additionally, the following third party websites hosted by us will also be affected:
+Additionally, the following third party websites hosted by us are also affected:
 
 - zerm.eu / zerm.link
 - emilycatgirl.de
@@ -31,7 +31,7 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] (2026-01-26 3:15) DNS switchover of `erwin.chrissx.de`
 - [x] (2026-01-26 3:20) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
 - [x] (2026-01-26 3:30) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
-- [ ] (2026-01-26 3:40) DNS switchover of all remaining domains
+- [x] (2026-01-26 3:40) DNS switchover of all remaining domains
 - [ ] `sophia` traffic decreases to an insignificant amount
 - [ ] (before 2026-02-01) `bottom.kinkcheck.top` removal from `sophia`
 - [ ] (before 2026-02-01) `deployment`, `watchtower` removal from `sophia`
@@ -43,14 +43,15 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 
 The final shutdown of `sophia` might be significantly delayed by the pending migration of the Discord bots `jana` and Inspiriererin (insp8n for short). Their migration has not been planned yet and will be announced at a very short notice.
 
-It has not been decided yet when the IP addresses assigned to `sophia` will be given away. We will hold onto them until at least 2026-02-20 to mitigate any confusion arising from their reuse by a third party.
+It has not been decided yet when the IP addresses assigned to `sophia` will be given away. We will hold onto them until at least 2026-02-27 to mitigate any confusion arising from their reuse by a third party.
 
 #### Semi-Live Updates
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-26 07:50) The issues have been resolved. `zerm.eu` has been switched over and verified.
 - (2026-01-26 05:02) successful switchover and verification completed: `chrissx.de`, `fonts.chrissx.de`, `gock.dev`. The main part of the migration is done and this notice will be significantly reworked soon.
-- (2026-01-26 05:00) `zerm.eu` has been rolled back to `sophia` because of broken Content-Type headers. This will be fixed in the coming days
+- (2026-01-26 05:00) `zerm.eu` has been rolled back to `sophia` because of broken Content-Type headers. This will be fixed soon
 - (2026-01-26 04:52) successful switchover and verification completed: `fuxgames.com`, `qa.chrissx.de`, `porn.chrissx.de`, `pixel.chrissx.de`, `new.chrissx.de`
 - (2026-01-26 04:43) successful switchover and verification completed: `bottom.kinkcheck.top`, `kinkcheck.top`
 - (2026-01-26 04:36) successful switchover and verification completed: `zerm.link`

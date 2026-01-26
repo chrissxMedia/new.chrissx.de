@@ -30,7 +30,7 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] (2026-01-26 3:00) DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
 - [x] (2026-01-26 3:15) DNS switchover of `erwin.chrissx.de`
 - [x] (2026-01-26 3:20) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
-- [ ] (2026-01-26 3:30) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
+- [x] (2026-01-26 3:30) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
 - [ ] (2026-01-26 3:40) DNS switchover of all remaining domains
 - [ ] `sophia` traffic decreases to an insignificant amount
 - [ ] (before 2026-02-01) `bottom.kinkcheck.top` removal from `sophia`
@@ -49,6 +49,10 @@ It has not been decided yet when the IP addresses assigned to `sophia` will be g
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-26 05:02) successful switchover and verification completed: `chrissx.de`, `fonts.chrissx.de`, `gock.dev`. The main part of the migration is done and this notice will be significantly reworked soon.
+- (2026-01-26 05:00) `zerm.eu` has been rolled back to `sophia` because of broken Content-Type headers. This will be fixed in the coming days
+- (2026-01-26 04:52) successful switchover and verification completed: `fuxgames.com`, `qa.chrissx.de`, `porn.chrissx.de`, `pixel.chrissx.de`, `new.chrissx.de`
+- (2026-01-26 04:43) successful switchover and verification completed: `bottom.kinkcheck.top`, `kinkcheck.top`
 - (2026-01-26 04:36) successful switchover and verification completed: `zerm.link`
 - (2026-01-26 04:30) switchover and verification completed: `emilycatgirl.de`. Chromium shows a security warning that we will investigate later (possible rollback)
 - (2026-01-26 04:25) successful switchover and verification completed: `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`

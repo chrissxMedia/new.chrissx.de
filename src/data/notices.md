@@ -28,10 +28,10 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 
 - [x] (2026-01-25) `ruby` setup, incl. complete testing
 - [ ] (2026-01-26 3:00) DNS switchover of underutilized domains: `chrisxeric.de`, `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
-- [ ] (2026-01-26 3:20) DNS switchover of `erwin.chrissx.de`
-- [ ] (2026-01-26 3:30) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
-- [ ] (2026-01-26 3:40) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
-- [ ] (2026-01-26 4:00) DNS switchover of all remaining domains
+- [ ] (2026-01-26 3:15) DNS switchover of `erwin.chrissx.de`
+- [ ] (2026-01-26 3:25) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
+- [ ] (2026-01-26 3:35) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
+- [ ] (2026-01-26 3:45) DNS switchover of all remaining domains
 - [ ] `sophia` traffic decreases to an insignificant amount
 - [ ] (before 2026-02-01) `bottom.kinkcheck.top` removal from `sophia`
 - [ ] (before 2026-02-01) `deployment`, `watchtower` removal from `sophia`
@@ -49,6 +49,10 @@ It has not been decided yet when the IP addresses assigned to `sophia` will be g
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-26 04:05) successful switchover and verification: `cpm.chrissx.de`, `elonisnwichser.de`, `media.chrissx.de`, `wiki.chrissx.de`
+- (2026-01-26 03:59) `chrisxeric.de` has been fully verified to work while accessing it through `ruby` (a test image is not available, which is expected)
+- (2026-01-26 03:55) First switchover: not officially supported domain `chrisxeric.de`
+- (2026-01-26 03:50) Coffee has been made, we are ready.
 - (2026-01-25 21:45) All services are working correctly.
 - (2026-01-25 12:15) All services are up-and-running. Testing will be conducted later today.
 - (2026-01-25 10:45) After 4 test installations, we have arrived at a concise and stable setup. The new server `ruby`, located in Falkenstein, will be set up during the next few hours.

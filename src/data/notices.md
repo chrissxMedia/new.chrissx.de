@@ -1,6 +1,20 @@
+### Upcoming removal of unused subdomains (Feb 2026)
+
+The following subdomains have not been used in years:
+
+- ftp.chrissx.de
+- get.cpm.chrissx.de
+- mc.chrissx.de
+- pad.chrissx.de
+- penis.chrissx.de
+
+We intend to remove their DNS entries after 2026-02-01, at least one day before the final shutdown of `sophia`.
+
+---
+
 ### Large-scale maintenance/migration (late Jan 2026, almost done)
 
-We are currently migrating all services running on our primary Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. Most of the migration has taken place on 2026-01-26 between 3:00 and 4:00 (AM) UTC (4:00-5:00 CET). A detailed timeline can be found below.
+We have migrated all services previously running on our Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. Most of the migration has taken place on 2026-01-26 between 3:00 and 4:00 (AM) UTC (4:00-5:00 CET). A detailed timeline can be found below.
 
 The following list of chrissx Media websites and services are affected:
 
@@ -32,7 +46,7 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] (2026-01-26 3:20) DNS switchover of `lyrics.chrissx.de`, `meme.chrissx.de`, `screwed.chrissx.de`
 - [x] (2026-01-26 3:30) DNS switchover of `zerm.link`, `bottom.kinkcheck.top`, `emilycatgirl.de`
 - [x] (2026-01-26 3:40) DNS switchover of all remaining domains
-- [ ] `sophia` traffic decreases to an insignificant amount
+- [x] `sophia` traffic decreases to an insignificant amount
 - [ ] (before 2026-02-01) `bottom.kinkcheck.top` removal from `sophia`
 - [ ] (before 2026-02-01) `deployment`, `watchtower` removal from `sophia`
 - [ ] (before 2026-02-01) `kinkcheck.top` removal from `sophia`
@@ -49,6 +63,7 @@ It has not been decided yet when the IP addresses assigned to `sophia` will be g
 
 Times are given in 24-hour CET, unless noted otherwise.
 
+- (2026-01-27 xx:xx) Yesterday `sophia` already saw a >80% reduction in traffic, despite the 4 hours before the migration. Today we're seeing <5% of usual traffic, which is mostly bots, so everything can be shut down in the coming days.
 - (2026-01-26 07:50) The issues have been resolved. `zerm.eu` has been switched over and verified.
 - (2026-01-26 05:02) successful switchover and verification completed: `chrissx.de`, `fonts.chrissx.de`, `gock.dev`. The main part of the migration is done and this notice will be significantly reworked soon.
 - (2026-01-26 05:00) `zerm.eu` has been rolled back to `sophia` because of broken Content-Type headers. This will be fixed soon
@@ -68,7 +83,7 @@ Times are given in 24-hour CET, unless noted otherwise.
 
 ---
 
-### Deprecation and upcoming removal of abandoned websites and Gopher protocol support (Jan 2026)
+### Deprecation and removal of abandoned websites and Gopher protocol support (Jan 2026)
 
 The following websites have not been updated for five years, are partially broken and don't serve any material purpose anymore:
 
@@ -85,20 +100,6 @@ For the same reasons, as well as focusing our development efforts, [the tech dem
 ### Upcoming maintenance in Rosenhof (Feb 2026)
 
 For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance between 2026-02-01 and 2026-02-10, and will update this notice with a more detailed timeline as we continue planning.
-
----
-
-### Upcoming removal of unused subdomains (Feb 2026)
-
-The following subdomains have not been used in years:
-
-- ftp.chrissx.de
-- get.cpm.chrissx.de
-- mc.chrissx.de
-- pad.chrissx.de
-- penis.chrissx.de
-
-We intend to remove their DNS entries after 2026-02-01, at least one day before the final shutdown of `sophia`.
 
 ---
 

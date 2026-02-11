@@ -1,3 +1,9 @@
+### Upcoming maintenance in Rosenhof (Feb 2026)
+
+For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance on 2026-02-15, and will update this notice with a more detailed timeline as we continue planning.
+
+---
+
 ### Removal of unused subdomains (Feb 2026)
 
 The following subdomains have not been used in years:
@@ -90,12 +96,6 @@ The following websites have not been updated for five years, are partially broke
 To optimize our deployment processes going forward and reduce unnecessary resource consumption, these websites and their corresponding DNS entries have been removed on 2026-01-25. The code will remain available in the form of public archives on GitHub.
 
 For the same reasons, as well as focusing our development efforts, [the tech demo that we call our Gopher site](https://github.com/chrissxMedia/chrissx.de-70) was taken down on 2026-01-25. The archive will also remain public on GitHub.
-
----
-
-### Upcoming maintenance in Rosenhof (Feb 2026)
-
-For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We intend to perform this maintenance on 2026-02-15, and will update this notice with a more detailed timeline as we continue planning.
 
 ---
 

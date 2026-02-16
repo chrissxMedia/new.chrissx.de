@@ -1,6 +1,6 @@
-### Upcoming maintenance in Rosenhof (Feb 2026)
+### Maintenance in Rosenhof (Feb 2026)
 
-For internal reasons, including but not limited to cleaning and battery replacement, we will be performing maintenance at our site in Rosenhof. During this, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) will be unavailable for a period of 10 to 30 minutes. We will perform this maintenance on 2026-02-15 at 22:00 (10:00 PM) UTC (23:00 CET).
+For internal reasons, including but not limited to cleaning and battery replacement, we have performed maintenance at our site in Rosenhof. On 2026-02-15, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) were unavailable between 22:00 and 22:35 (10:xx PM) UTC (23:00-23:35 CET). We expected this to take less time than it did, learnings have been made.
 
 ---
 

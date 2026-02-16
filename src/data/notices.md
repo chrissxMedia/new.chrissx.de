@@ -1,3 +1,9 @@
+### Deprecation and upcoming archival of the ludwig Docker image (pygopherd, Mar 2026)
+
+To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-28. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).
+
+---
+
 ### Maintenance in Rosenhof (Feb 2026)
 
 For internal reasons, including but not limited to cleaning and battery replacement, we have performed maintenance at our site in Rosenhof. On 2026-02-15, [all services hosted there](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file#infrastructure) (i.e. Email, Mumble and BUcKET) were unavailable between 22:00 and 22:35 (10:xx PM) UTC (23:00-23:35 CET). We expected this to take less time than it did, learnings have been made.
@@ -96,9 +102,3 @@ The following websites have not been updated for five years, are partially broke
 To optimize our deployment processes going forward and reduce unnecessary resource consumption, these websites and their corresponding DNS entries have been removed on 2026-01-25. The code will remain available in the form of public archives on GitHub.
 
 For the same reasons, as well as focusing our development efforts, [the tech demo that we call our Gopher site](https://github.com/chrissxMedia/chrissx.de-70) was taken down on 2026-01-25. The archive will also remain public on GitHub.
-
----
-
-### Deprecation and upcoming archival of the ludwig Docker image (pygopherd, Mar 2026)
-
-To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-28. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).

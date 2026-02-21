@@ -46,7 +46,7 @@ Additionally, the following third party websites hosted by us are also affected:
 - zerm.eu / zerm.link
 - emilycatgirl.de
 
-At least a few days after the migration, after 2026-02-07, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
+On 2026-02-22, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
 
 #### Detailed Timeline
 
@@ -60,10 +60,8 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] (2026-01-26 3:40) DNS switchover of all remaining domains
 - [x] `sophia` traffic decreases to an insignificant amount
 - [x] (2026-01-29) Significant reduction of `sophia`'s `nginx` configuration
-- [ ] (after 2026-02-15) Migration of Discord bots (see below)
-- [ ] (after 2026-02-21) Final Shutdown of `sophia`
-
-The final shutdown of `sophia` has been significantly delayed by the pending migration of the Discord bots `jana` and Inspiriererin (insp8n for short). Their migration has not been fully planned yet and will be announced at a very short notice.
+- [x] (2026-02-21) Migration of Discord bots
+- [ ] (2026-02-22) Final Shutdown of `sophia`
 
 It has not been decided yet when the IP addresses assigned to `sophia` will be given away. We will hold onto them until at least 2026-03-15 to mitigate any confusion arising from their reuse by a third party.
 

@@ -24,7 +24,7 @@ Their DNS entries were removed on 2026-02-11.
 
 ---
 
-### Large-scale maintenance/migration (late Jan 2026, almost done)
+### Large-scale maintenance/migration (late Jan 2026)
 
 We have migrated all services previously running on our Nuremberg-based server `sophia`, [which includes most of what we operate](https://github.com/chrissxMedia/chrissx.de.conf.sh?tab=readme-ov-file), to the new server `ruby`. We're going to great lengths to make this switchover as smooth as possible, but there might be short periods of downtime or other disruptions, such as unexpected errors. Most of the migration has taken place on 2026-01-26 between 3:00 and 4:00 (AM) UTC (4:00-5:00 CET). A detailed timeline can be found below.
 
@@ -46,7 +46,7 @@ Additionally, the following third party websites hosted by us are also affected:
 - zerm.eu / zerm.link
 - emilycatgirl.de
 
-On 2026-02-22, `sophia` will be taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
+On 2026-02-22, `sophia` was taken offline permanently. Please note that after this has taken place, no services will be available at `sophia.chrissx.de` (or its associated IP addresses) anymore. Specifically, make sure that if you use `erwin`, the correct URL is not `http://sophia.chrissx.de:8080/`, but `http://erwin.chrissx.de:8080/` or `https://erwin.chrissx.de/`.
 
 #### Detailed Timeline
 
@@ -61,7 +61,8 @@ We will carefully monitor for breakage after each step. All times are 24-hour UT
 - [x] `sophia` traffic decreases to an insignificant amount
 - [x] (2026-01-29) Significant reduction of `sophia`'s `nginx` configuration
 - [x] (2026-02-21) Migration of Discord bots
-- [ ] (2026-02-22) Final Shutdown of `sophia`
+- [x] (2026-02-22) Final Shutdown of `sophia`
+- [x] (2026-02-23) [A very cheesy farewell](https://mastodon.online/@chrissx/116122167254278983)
 
 It has not been decided yet when the IP addresses assigned to `sophia` will be given away. We will hold onto them until at least 2026-03-15 to mitigate any confusion arising from their reuse by a third party.
 

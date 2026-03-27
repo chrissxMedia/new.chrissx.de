@@ -1,6 +1,6 @@
-### Deprecation and upcoming archival of the ludwig Docker image (pygopherd, Mar 2026)
+### Deprecation and archival of the ludwig Docker image (pygopherd, Mar 2026)
 
-To focus our development efforts, we intend to archive the `chrissx/ludwig` Docker image and stop providing updates after 2026-02-28. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/master/ludwig/README.md#migrating).
+To focus our development efforts, we have archived the `chrissx/ludwig` Docker image on 2026-03-27. A detailed migration guide has been added to [its README](https://github.com/chrissxMedia/chrissx.de.conf.sh/blob/9e699bdcf4a68f242961005decd6263c1fd20d9c/ludwig/README.md#migrating).
 
 ---
 

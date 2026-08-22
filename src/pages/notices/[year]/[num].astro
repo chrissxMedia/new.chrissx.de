@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import Notice from "../../../components/Notice.astro";
+
+export async function getStaticPaths() {
+    return getCollection("notices").then((x) =>
+        x.map((a) => ({
+            params: { year: a.id.split("/")[0], num: a.id.split("/")[1] },
+            props: a,
+        })),
+    );
+}
+---
+
+<Layout title={Astro.props.data.title}>
+    <meta
+        name="fediverse:creator"
+        content="@chrissx@mastodon.online"
+        slot="head"
+    />
+    <Notice {...Astro.props} mode="standalone" />
+</Layout>

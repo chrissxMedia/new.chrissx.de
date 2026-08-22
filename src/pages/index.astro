@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Notices from "../data/notices.md";
+import Notice from "../components/Notice.astro";
+import { getCollection } from "astro:content";
+
+const notices = await getCollection("notices");
+const num = (x: { id: string }, i: number) => Number(x.id.split("/")[i]);
+notices.sort((a, b) => num(b, 0) - num(a, 0) || num(b, 1) - num(a, 1));
 ---
 
 <Layout title="chrissx Media">
@@ -23,11 +28,15 @@ import Notices from "../data/notices.md";
     <a href="//youtube.com/@chrissxReuploads">chrissx Reuploads</a><br />
     <a href="//youtube.com/@twinkspotting">Twinkspotting</a><br />
 
-    <br/><br/>
+    <br /><br />
 
     <div class="notices">
-        <h2 id="notices">Notices (upcoming changes and maintenance)</h3>
-        <Notices />
+        <h2 id="notices">Notices (upcoming changes and maintenance)</h2>
+        {
+            notices
+                .flatMap((x) => [<Notice {...x} mode="list" />, <hr />])
+                .slice(0, -1)
+        }
     </div>
 </Layout>
 

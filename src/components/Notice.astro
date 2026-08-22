@@ -1,0 +1,53 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"notices"> & { mode: "list" | "standalone" };
+
+const {
+    id,
+    data: { title, date, archived },
+    mode,
+} = Astro.props;
+const { Content } = await render(Astro.props);
+---
+
+{
+    mode === "standalone" ? (
+        <div class="title">
+            <h2>{title}</h2>
+            <div class="meta" style={{color: archived ? "green" : "red"}}>{date}</div>
+        </div>
+    ) : (
+        <a href={`/notices/${id}`} class="title">
+            <h3>{title}</h3>
+            <div class="meta">{date}</div>
+        </a>
+    )
+}
+<div class="md">
+    <Content />
+</div>
+
+<style>
+    .md, .title {
+        font-family: var(--sans-serif);
+    }
+    .meta {
+        font-family: var(--unifont);
+    }
+    .title {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        gap: 1em;
+    }
+    .meta {
+        gap: 0.5em;
+        height: min-content;
+        margin: auto 0;
+    }
+    a, :visited {
+        color: white;
+        text-decoration: none;
+    }
+</style>

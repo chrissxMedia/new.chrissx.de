@@ -1,0 +1,31 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { tracks } from "../../../lib";
+import Track from "../../../components/Track.astro";
+
+export function getStaticPaths() {
+    return tracks.map(({ isrc }) => ({ params: { isrc } }));
+}
+
+const { isrc } = Astro.params;
+const track = tracks.find((t) => t.isrc === isrc);
+
+if (!track) {
+    return new Response("Album not found", { status: 404 });
+}
+---
+
+<Layout title={`${track.name} | chrissx Media Lyrics Department`}>
+    <p>
+        All content displayed on this web page is the intellectual property of
+        chrissx Media. All rights reserved. Do not distribute without written
+        permission.
+    </p>
+    <Track {...track} />
+</Layout>
+
+<style>
+    :global(main) {
+        font-family: var(--sans-serif);
+    }
+</style>

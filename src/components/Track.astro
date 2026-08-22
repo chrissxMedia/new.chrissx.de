@@ -1,9 +1,5 @@
 ---
-import g2mm from "g2mm";
-import { DEFAULT_FORMAT } from "../lyrics-format";
-
 const { name, isrc, length, lyrics, artists } = Astro.props;
-const defaultLyrics = lyrics ? g2mm(lyrics, DEFAULT_FORMAT) : undefined;
 ---
 
 <div class="track">
@@ -19,33 +15,51 @@ const defaultLyrics = lyrics ? g2mm(lyrics, DEFAULT_FORMAT) : undefined;
             )
         } Length: {length}, ISRC: {isrc}
     </span>
-    {defaultLyrics && <p class="lyrics" data-lyrics={lyrics}>{defaultLyrics}</p>}
+    {lyrics && <p class="lyrics">{lyrics}</p>}
 </div>
 
 <script>
     import g2mm from "g2mm";
-    import { FORMAT_EVENT } from "../lyrics-format";
+    import {
+        DEFAULT_FORMAT,
+        FORMAT_EVENT,
+        STORAGE_KEY,
+        type Format,
+    } from "../lyrics-format";
 
-    type Format = "genius" | "musixmatch" | "plain";
+    function stored(): Format {
+        try {
+            const v = localStorage.getItem(STORAGE_KEY);
+            return v === "genius" || v === "musixmatch" || v === "plain"
+                ? v
+                : DEFAULT_FORMAT;
+        } catch {
+            return DEFAULT_FORMAT;
+        }
+    }
 
     document
         .querySelectorAll<HTMLElement>("p.lyrics")
-        .forEach((el) => {
-            const raw = el.getAttribute("data-lyrics")!;
-            const apply = (fmt: Format) => {
-                el.textContent = g2mm(raw, fmt);
+        .forEach((p) => {
+            const raw = p.textContent;
+            const update = (fmt: Format) => {
+                p.textContent = g2mm(raw, fmt);
             };
+            update(stored());
             document.addEventListener(
                 FORMAT_EVENT,
-                (e: Event) => apply((e as CustomEvent<Format>).detail),
+                (e: Event) => update((e as CustomEvent<Format>).detail),
             );
+        });
 
-            const btn = el.parentElement!.querySelector<HTMLButtonElement>(
-                "button.track-clipboard",
-            );
-            btn?.addEventListener("click", () => {
+    document
+        .querySelectorAll<HTMLButtonElement>("button.track-clipboard")
+        .forEach((btn) => {
+            const p = btn.closest(".track")?.querySelector("p.lyrics");
+            if (!p) return;
+            btn.addEventListener("click", () => {
                 navigator.clipboard
-                    .writeText(el.textContent!)
+                    .writeText(p.textContent)
                     .then(() => {
                         btn.innerHTML = "Copied Lyrics";
                         setTimeout(() => (btn.innerHTML = "Copy Lyrics"), 1500);

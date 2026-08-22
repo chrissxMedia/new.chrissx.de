@@ -41,6 +41,8 @@ const labels: Record<Format, string> = {
         );
         const thumb =
             tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
+        const first = buttons[0];
+        let containerPad = 0;
 
         function stored(): Format {
             try {
@@ -57,9 +59,14 @@ const labels: Record<Format, string> = {
             const sel =
                 buttons.find((b) => b.getAttribute("aria-selected") === "true") ??
                 null;
-            if (!sel) return;
-            thumb.style.width = `${sel.offsetWidth}px`;
-            thumb.style.transform = `translateX(${sel.offsetLeft - 4}px)`;
+            if (!sel || !first) return;
+            containerPad = parseFloat(
+                getComputedStyle(tabs).paddingLeft || "0",
+            );
+            thumb.style.width = `${sel.offsetWidth - 2 * containerPad}px`;
+            thumb.style.transform = `translateX(${
+                sel.offsetLeft - first.offsetLeft - containerPad
+            }px)`;
         }
 
         function apply(f: Format, persist: boolean, emit: boolean) {
@@ -81,19 +88,12 @@ const labels: Record<Format, string> = {
             }
         }
 
-        const initial = stored();
-        apply(initial, false, initial !== DEFAULT_FORMAT);
+        apply(stored(), false, false);
 
         buttons.forEach((b) =>
             b.addEventListener("click", () =>
                 apply(b.dataset.format as Format, true, true),
             ),
-        );
-
-        // keep multiple tab groups in a page in sync
-        document.addEventListener(
-            FORMAT_EVENT,
-            (e: Event) => apply((e as CustomEvent<Format>).detail, false, false),
         );
 
         new ResizeObserver(positionSelected).observe(tabs);
@@ -109,7 +109,7 @@ const labels: Record<Format, string> = {
         position: relative;
         background-color: #0a0a0a;
         border: 1px solid #333;
-        border-radius: 20px;
+        border-radius: 999px;
         margin-bottom: 16px;
     }
 
@@ -120,7 +120,7 @@ const labels: Record<Format, string> = {
         left: 0;
         width: 0;
         background-color: #252525;
-        border-radius: 16px;
+        border-radius: 999px;
         transition:
             width 180ms ease,
             transform 180ms ease;
@@ -136,8 +136,8 @@ const labels: Record<Format, string> = {
         font: inherit;
         font-size: 14px;
         line-height: 1;
-        padding: 8px 16px;
-        border-radius: 16px;
+        padding: 8px 14px;
+        border-radius: 999px;
         cursor: pointer;
         transition: color 180ms ease;
     }

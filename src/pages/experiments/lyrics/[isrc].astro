@@ -12,7 +12,7 @@ const { isrc } = Astro.params;
 const track = tracks.find((t) => t.isrc === isrc);
 
 if (!track) {
-    return new Response("Album not found", { status: 404 });
+    return new Response("Track not found", { status: 404 });
 }
 ---
 

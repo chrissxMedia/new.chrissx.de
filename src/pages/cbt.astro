@@ -1,7 +1,10 @@
 ---
 import { CMText } from "cmdesigns";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import TeX from "astro-tex";
+import cbt1 from "../cbt/1.png";
+import cbt2 from "../cbt/2.png";
 ---
 
 <Layout title="chrissx BoZz/Battle Turnier" lang="de">
@@ -45,8 +48,8 @@ import TeX from "astro-tex";
             </li>
             <li>
                 <p>Lade die Datei(en) irgendwo im Internet hoch, wir empfehlen&nbsp;<a href="https://wetransfer.com">WeTransfer</a>.</p>
-                <img src="/cbt/1.png" alt='Wähle "Get transfer link" aus' />
-                <img src="/cbt/2.png" height="250px" alt='Lade die Datei(en) hoch und klicke auf "Get a link"' />
+                <Image src={cbt1} alt='Wähle "Get transfer link" aus' />
+                <Image src={cbt2} height={250} alt='Lade die Datei(en) hoch und klicke auf "Get a link"' />
             </li>
             <li>
                 <p>Schicke uns den Link an&nbsp;<a href="mailto:cbt@chrissx.de">cbt@chrissx.de</a>,

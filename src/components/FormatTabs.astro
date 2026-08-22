@@ -41,9 +41,6 @@ const labels: Record<Format, string> = {
         );
         const thumb =
             tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
-        const first = buttons[0];
-        let containerPad = 0;
-
         function stored(): Format {
             try {
                 const v = localStorage.getItem(STORAGE_KEY);
@@ -59,14 +56,9 @@ const labels: Record<Format, string> = {
             const sel =
                 buttons.find((b) => b.getAttribute("aria-selected") === "true") ??
                 null;
-            if (!sel || !first) return;
-            containerPad = parseFloat(
-                getComputedStyle(tabs).paddingLeft || "0",
-            );
-            thumb.style.width = `${sel.offsetWidth - 2 * containerPad}px`;
-            thumb.style.transform = `translateX(${
-                sel.offsetLeft - first.offsetLeft - containerPad
-            }px)`;
+            if (!sel) return;
+            thumb.style.width = `${sel.offsetWidth}px`;
+            thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
         }
 
         function apply(f: Format, persist: boolean, emit: boolean) {

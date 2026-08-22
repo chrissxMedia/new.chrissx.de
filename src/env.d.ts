@@ -21,8 +21,3 @@ declare type _yalbum = {
 declare type track = _ytrack & Required<Pick<_ytrack, "artists">>;
 declare type album = Omit<Omit<_yalbum, "tracks">, "release">
     & { tracks: [track, ...track[]], release: import("dayjs").Dayjs };
-
-declare module "*/albums.yaml" {
-    const value: _yalbum[];
-    export default value;
-}

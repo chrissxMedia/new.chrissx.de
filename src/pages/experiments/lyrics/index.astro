@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
+import Search from "../../../components/Search.astro";
 ---
 
 <Layout title="chrissx Media Lyrics Department">
@@ -10,6 +11,7 @@ import Album from "../../../components/Album.astro";
         chrissx Media. All rights reserved. Do not distribute without written
         permission.
     </p>
+    <Search />
     {albums.toReversed().map((a) => <Album {...a} />)}
 </Layout>
 

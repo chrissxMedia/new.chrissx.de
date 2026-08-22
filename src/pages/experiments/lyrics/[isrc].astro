@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import { tracks } from "../../../lib";
 import Track from "../../../components/Track.astro";
+import Search from "../../../components/Search.astro";
 
 export function getStaticPaths() {
     return tracks.map(({ isrc }) => ({ params: { isrc } }));
@@ -21,6 +22,7 @@ if (!track) {
         chrissx Media. All rights reserved. Do not distribute without written
         permission.
     </p>
+    <Search />
     <Track {...track} />
 </Layout>
 

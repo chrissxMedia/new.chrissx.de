@@ -1,0 +1,77 @@
+---
+import g2mm from "g2mm";
+
+export type Props = track & {
+    musixmatch?: boolean;
+};
+
+const { name, isrc, length, lyrics, artists, musixmatch } = Astro.props;
+const displayedLyrics = lyrics && musixmatch ? g2mm(lyrics) : lyrics;
+---
+
+<div>
+    <a href={isrc} id={isrc}>
+        {name} by {artists?.join(", ")}
+    </a>
+    <span>
+        {
+            displayedLyrics && (
+                <button class="track-clipboard" data-lyrics={displayedLyrics}>
+                    Copy Lyrics
+                </button>
+            )
+        } Length: {length}, ISRC: {isrc}
+    </span>
+    {displayedLyrics && <p>{displayedLyrics}</p>}
+</div>
+
+<script>
+    document
+        .querySelectorAll<HTMLElement>("button.track-clipboard")
+        .forEach((btn) => {
+            btn.addEventListener("click", () => {
+                navigator.clipboard
+                    .writeText(btn.dataset.lyrics!)
+                    .then(() => (btn.innerHTML = "Copied Lyrics"));
+            });
+        });
+</script>
+
+<style>
+    div {
+        background-color: #101010;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    a,
+    span {
+        font-size: 24px;
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+
+    span {
+        float: right;
+        font-weight: 500;
+    }
+
+    .track-clipboard {
+        border-radius: 20px;
+        background-color: #101010;
+        color: white;
+        border-color: white;
+        margin-right: 10px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    p {
+        white-space: pre-wrap;
+    }
+</style>

@@ -1,0 +1,42 @@
+---
+import Track from "./Track.astro";
+
+export type Props = album & { musixmatch?: boolean };
+
+const { name, upc, artists, release, tracks } = Astro.props;
+---
+
+<div>
+    <a href={upc?.toString()} id={upc?.toString()}>
+        {name} by {artists.join(", ")}
+    </a>
+    <span>
+        Released {release.format("YYYY-MM-DD")}, UPC: {upc}
+    </span>
+    {tracks.map((t) => <Track {...Astro.props} {...t} />)}
+</div>
+
+<style>
+    div {
+        background-color: #0a0a0a;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    a,
+    span {
+        font-size: 32px;
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+
+    span {
+        font-weight: 500;
+        float: right;
+    }
+</style>

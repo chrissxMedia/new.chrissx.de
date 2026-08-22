@@ -1,0 +1,158 @@
+---
+import {
+    DEFAULT_FORMAT,
+    FORMATS,
+    type Format,
+} from "../lyrics-format";
+
+const labels: Record<Format, string> = {
+    genius: "Genius",
+    musixmatch: "Musixmatch",
+    plain: "Plain",
+};
+---
+
+<div class="format-tabs" role="tablist" aria-label="Lyrics format">
+    <span class="format-tabs-thumb" aria-hidden="true"></span>
+    {FORMATS.map((f) => (
+        <button
+            type="button"
+            role="tab"
+            data-format={f}
+            aria-selected={f === DEFAULT_FORMAT}
+        >
+            {labels[f]}
+        </button>
+    ))}
+</div>
+
+<script>
+    import {
+        DEFAULT_FORMAT,
+        FORMAT_EVENT,
+        STORAGE_KEY,
+        type Format,
+    } from "../lyrics-format";
+
+    const tabs = document.querySelector<HTMLDivElement>(".format-tabs");
+    if (tabs) {
+        const buttons = Array.from(
+            tabs.querySelectorAll<HTMLButtonElement>("button[data-format]"),
+        );
+        const thumb =
+            tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
+
+        function stored(): Format {
+            try {
+                const v = localStorage.getItem(STORAGE_KEY);
+                return v === "genius" || v === "musixmatch" || v === "plain"
+                    ? v
+                    : DEFAULT_FORMAT;
+            } catch {
+                return DEFAULT_FORMAT;
+            }
+        }
+
+        function positionSelected() {
+            const sel =
+                buttons.find((b) => b.getAttribute("aria-selected") === "true") ??
+                null;
+            if (!sel) return;
+            thumb.style.width = `${sel.offsetWidth}px`;
+            thumb.style.transform = `translateX(${sel.offsetLeft - 4}px)`;
+        }
+
+        function apply(f: Format, persist: boolean, emit: boolean) {
+            buttons.forEach((b) =>
+                b.setAttribute("aria-selected", String(b.dataset.format === f)),
+            );
+            positionSelected();
+            if (persist) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, f);
+                } catch {
+                    // ignore storage failures
+                }
+            }
+            if (emit) {
+                document.dispatchEvent(
+                    new CustomEvent<Format>(FORMAT_EVENT, { detail: f }),
+                );
+            }
+        }
+
+        const initial = stored();
+        apply(initial, false, initial !== DEFAULT_FORMAT);
+
+        buttons.forEach((b) =>
+            b.addEventListener("click", () =>
+                apply(b.dataset.format as Format, true, true),
+            ),
+        );
+
+        // keep multiple tab groups in a page in sync
+        document.addEventListener(
+            FORMAT_EVENT,
+            (e: Event) => apply((e as CustomEvent<Format>).detail, false, false),
+        );
+
+        new ResizeObserver(positionSelected).observe(tabs);
+        window.addEventListener("load", positionSelected);
+    }
+</script>
+
+<style>
+    .format-tabs {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        position: relative;
+        background-color: #0a0a0a;
+        border: 1px solid #333;
+        border-radius: 20px;
+        margin-bottom: 16px;
+    }
+
+    .format-tabs-thumb {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: 0;
+        background-color: #252525;
+        border-radius: 16px;
+        transition:
+            width 180ms ease,
+            transform 180ms ease;
+        pointer-events: none;
+    }
+
+    .format-tabs button {
+        position: relative;
+        z-index: 1;
+        border: none;
+        background: transparent;
+        color: #c0c0c0;
+        font: inherit;
+        font-size: 14px;
+        line-height: 1;
+        padding: 8px 16px;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: color 180ms ease;
+    }
+
+    .format-tabs button[aria-selected="true"] {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .format-tabs button:hover {
+        color: #ffffff;
+    }
+
+    .format-tabs button:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 1px;
+    }
+</style>

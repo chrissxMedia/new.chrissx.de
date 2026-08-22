@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
 import Search from "../../../components/Search.astro";
+import FormatTabs from "../../../components/FormatTabs.astro";
 
 export function getStaticPaths() {
     return albums.map(({ upc }) => ({ params: { upc: upc!.toString() } }));
@@ -23,6 +24,7 @@ if (!album) {
         permission.
     </p>
     <Search />
+    <FormatTabs />
     <Album {...album} />
 </Layout>
 

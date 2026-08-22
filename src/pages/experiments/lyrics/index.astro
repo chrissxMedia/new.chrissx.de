@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
 import Search from "../../../components/Search.astro";
+import FormatTabs from "../../../components/FormatTabs.astro";
 ---
 
 <Layout title="chrissx Media Lyrics Department">
@@ -12,6 +13,7 @@ import Search from "../../../components/Search.astro";
         permission.
     </p>
     <Search />
+    <FormatTabs />
     {albums.toReversed().map((a) => <Album {...a} />)}
 </Layout>
 

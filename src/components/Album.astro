@@ -1,7 +1,7 @@
 ---
 import Track from "./Track.astro";
 
-export type Props = album & { musixmatch?: boolean };
+export type Props = album;
 
 const { name, upc, artists, release, tracks } = Astro.props;
 ---
@@ -13,7 +13,7 @@ const { name, upc, artists, release, tracks } = Astro.props;
     <span>
         Released {release.format("YYYY-MM-DD")}, UPC: {upc}
     </span>
-    {tracks.map((t) => <Track {...Astro.props} {...t} />)}
+    {tracks.map((t) => <Track {...t} />)}
 </div>
 
 <style>

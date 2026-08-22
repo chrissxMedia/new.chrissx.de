@@ -1,44 +1,61 @@
 ---
 import g2mm from "g2mm";
+import { DEFAULT_FORMAT } from "../lyrics-format";
 
-export type Props = track & {
-    musixmatch?: boolean;
-};
-
-const { name, isrc, length, lyrics, artists, musixmatch } = Astro.props;
-const displayedLyrics = lyrics && musixmatch ? g2mm(lyrics) : lyrics;
+const { name, isrc, length, lyrics, artists } = Astro.props;
+const defaultLyrics = lyrics ? g2mm(lyrics, DEFAULT_FORMAT) : undefined;
 ---
 
-<div>
+<div class="track">
     <a href={isrc} id={isrc}>
-        {name} by {artists?.join(", ")}
+        {name} by {artists.join(", ")}
     </a>
     <span>
         {
-            displayedLyrics && (
-                <button class="track-clipboard" data-lyrics={displayedLyrics}>
+            lyrics && (
+                <button class="track-clipboard">
                     Copy Lyrics
                 </button>
             )
         } Length: {length}, ISRC: {isrc}
     </span>
-    {displayedLyrics && <p>{displayedLyrics}</p>}
+    {defaultLyrics && <p class="lyrics" data-lyrics={lyrics}>{defaultLyrics}</p>}
 </div>
 
 <script>
+    import g2mm from "g2mm";
+    import { FORMAT_EVENT } from "../lyrics-format";
+
+    type Format = "genius" | "musixmatch" | "plain";
+
     document
-        .querySelectorAll<HTMLElement>("button.track-clipboard")
-        .forEach((btn) => {
-            btn.addEventListener("click", () => {
+        .querySelectorAll<HTMLElement>("p.lyrics")
+        .forEach((el) => {
+            const raw = el.getAttribute("data-lyrics")!;
+            const apply = (fmt: Format) => {
+                el.textContent = g2mm(raw, fmt);
+            };
+            document.addEventListener(
+                FORMAT_EVENT,
+                (e: Event) => apply((e as CustomEvent<Format>).detail),
+            );
+
+            const btn = el.parentElement!.querySelector<HTMLButtonElement>(
+                "button.track-clipboard",
+            );
+            btn?.addEventListener("click", () => {
                 navigator.clipboard
-                    .writeText(btn.dataset.lyrics!)
-                    .then(() => (btn.innerHTML = "Copied Lyrics"));
+                    .writeText(el.textContent!)
+                    .then(() => {
+                        btn.innerHTML = "Copied Lyrics";
+                        setTimeout(() => (btn.innerHTML = "Copy Lyrics"), 1500);
+                    });
             });
         });
 </script>
 
 <style>
-    div {
+    .track {
         background-color: #101010;
         border-radius: 20px;
         padding: 5px;
@@ -71,7 +88,7 @@ const displayedLyrics = lyrics && musixmatch ? g2mm(lyrics) : lyrics;
         font-weight: 400;
     }
 
-    p {
+    .lyrics {
         white-space: pre-wrap;
     }
 </style>

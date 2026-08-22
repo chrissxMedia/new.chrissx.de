@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { tracks } from "../../../lib";
 import Track from "../../../components/Track.astro";
 import Search from "../../../components/Search.astro";
+import FormatTabs from "../../../components/FormatTabs.astro";
 
 export function getStaticPaths() {
     return tracks.map(({ isrc }) => ({ params: { isrc } }));
@@ -23,6 +24,7 @@ if (!track) {
         permission.
     </p>
     <Search />
+    <FormatTabs />
     <Track {...track} />
 </Layout>
 

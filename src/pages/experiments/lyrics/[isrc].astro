@@ -23,13 +23,25 @@ if (!track) {
         chrissx Media. All rights reserved. Do not distribute without written
         permission.
     </p>
-    <Search />
-    <FormatTabs />
+    <div class="controls">
+        <FormatTabs />
+        <Search />
+    </div>
     <Track {...track} />
 </Layout>
 
 <style>
     :global(main) {
         font-family: var(--sans-serif);
+    }
+    .controls {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    .controls pagefind-searchbox {
+        flex: 0 0 auto;
+        margin-left: auto;
     }
 </style>

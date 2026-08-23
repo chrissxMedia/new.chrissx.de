@@ -46,7 +46,6 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
                     .writeText(p.textContent)
                     .then(() => {
                         btn.innerHTML = "Copied Lyrics";
-                        setTimeout(() => (btn.innerHTML = "Copy Lyrics"), 1500);
                     });
             });
         });

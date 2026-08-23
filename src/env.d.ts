@@ -3,7 +3,7 @@
 declare type _ytrack = {
     name: string,
     isrc?: string,
-    length: number,
+    length: string,
     lyrics?: string,
     artists?: [string, ...string[]],
 };

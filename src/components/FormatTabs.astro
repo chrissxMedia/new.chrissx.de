@@ -1,9 +1,5 @@
 ---
 import type { LyricStyle } from "g2mm";
-import {
-    DEFAULT_FORMAT,
-    FORMATS,
-} from "../lyrics-format";
 
 const labels: Record<LyricStyle, string> = {
     genius: "Genius",
@@ -14,12 +10,12 @@ const labels: Record<LyricStyle, string> = {
 
 <div class="format-tabs" role="tablist" aria-label="Lyrics format">
     <span class="format-tabs-thumb" aria-hidden="true"></span>
-    {FORMATS.map((f) => (
+    {(["genius", "musixmatch", "plain"] as const).map((f) => (
         <button
             type="button"
             role="tab"
             data-format={f}
-            aria-selected={f === DEFAULT_FORMAT}
+            aria-selected={f === "genius"}
         >
             {labels[f]}
         </button>
@@ -28,11 +24,6 @@ const labels: Record<LyricStyle, string> = {
 
 <script>
     import type { LyricStyle } from "g2mm";
-    import {
-        DEFAULT_FORMAT,
-        FORMAT_EVENT,
-        STORAGE_KEY,
-    } from "../lyrics-format";
 
     const tabs = document.querySelector<HTMLDivElement>(".format-tabs");
     if (tabs) {
@@ -41,16 +32,6 @@ const labels: Record<LyricStyle, string> = {
         );
         const thumb =
             tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
-        function stored(): LyricStyle {
-            try {
-                const v = localStorage.getItem(STORAGE_KEY);
-                return v === "genius" || v === "musixmatch" || v === "plain"
-                    ? v
-                    : DEFAULT_FORMAT;
-            } catch {
-                return DEFAULT_FORMAT;
-            }
-        }
 
         function positionSelected() {
             const sel =
@@ -68,19 +49,25 @@ const labels: Record<LyricStyle, string> = {
             positionSelected();
             if (persist) {
                 try {
-                    localStorage.setItem(STORAGE_KEY, f);
+                    localStorage.setItem("lyrics-format", f);
                 } catch {
                     // ignore storage failures
                 }
             }
             if (emit) {
                 document.dispatchEvent(
-                    new CustomEvent<LyricStyle>(FORMAT_EVENT, { detail: f }),
+                    new CustomEvent<LyricStyle>("lyrics-format-change", {
+                        detail: f,
+                    }),
                 );
             }
         }
 
-        apply(stored(), false, false);
+        apply(
+            (localStorage.getItem("lyrics-format") ?? "genius") as LyricStyle,
+            false,
+            false,
+        );
 
         buttons.forEach((b) =>
             b.addEventListener("click", () =>

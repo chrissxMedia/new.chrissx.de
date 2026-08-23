@@ -1,5 +1,6 @@
 ---
 import Track from "./Track.astro";
+import type { album } from "../lib";
 export type Props = album;
 const { name, upc, artists, release, tracks } = Astro.props;
 ---

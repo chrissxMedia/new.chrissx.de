@@ -12,7 +12,7 @@ const { title } = Astro.props;
         chrissx Media. All rights reserved. Do not distribute without written
         permission.
     </p>
-    <div class="controls">
+    <div>
         <FormatTabs />
         <Search />
     </div>
@@ -23,13 +23,13 @@ const { title } = Astro.props;
     :global(main) {
         font-family: var(--sans-serif);
     }
-    .controls {
+    div {
         display: flex;
         align-items: center;
         gap: 16px;
         margin-bottom: 16px;
     }
-    .controls pagefind-searchbox {
+    div > :global(pagefind-searchbox) {
         flex: 0 0 auto;
         margin-left: auto;
     }

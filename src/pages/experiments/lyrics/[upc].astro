@@ -1,9 +1,7 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
+import LyricsLayout from "../../../layouts/LyricsLayout.astro";
 import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
-import Search from "../../../components/Search.astro";
-import FormatTabs from "../../../components/FormatTabs.astro";
 
 export function getStaticPaths() {
     return albums.map(({ upc }) => ({ params: { upc: upc!.toString() } }));
@@ -17,31 +15,6 @@ if (!album) {
 }
 ---
 
-<Layout title={`${album.name} | chrissx Media Lyrics Department`}>
-    <p>
-        All content displayed on this web page is the intellectual property of
-        chrissx Media. All rights reserved. Do not distribute without written
-        permission.
-    </p>
-    <div class="controls">
-        <FormatTabs />
-        <Search />
-    </div>
+<LyricsLayout title={`${album.name} | chrissx Media Lyrics Department`}>
     <Album {...album} />
-</Layout>
-
-<style>
-    :global(main) {
-        font-family: var(--sans-serif);
-    }
-    .controls {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 16px;
-    }
-    .controls pagefind-searchbox {
-        flex: 0 0 auto;
-        margin-left: auto;
-    }
-</style>
+</LyricsLayout>

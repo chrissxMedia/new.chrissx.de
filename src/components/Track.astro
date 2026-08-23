@@ -1,4 +1,5 @@
 ---
+export type Props = track;
 const { name, isrc, length, lyrics, artists } = Astro.props;
 ---
 
@@ -7,13 +8,9 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
         {name} by {artists.join(", ")}
     </a>
     <span>
-        {
-            lyrics && (
-                <button class="track-clipboard">
-                    Copy Lyrics
-                </button>
-            )
-        } Length: {length}, ISRC: {isrc}
+        {lyrics && <button class="track-clipboard">Copy Lyrics</button>} Length: {
+            length
+        }, ISRC: {isrc}
     </span>
     {lyrics && <p class="lyrics">{lyrics}</p>}
 </div>
@@ -22,31 +19,25 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
     import g2mm from "g2mm";
     import type { LyricStyle } from "g2mm";
 
-    document
-        .querySelectorAll<HTMLElement>("p.lyrics")
-        .forEach((p) => {
-            const raw = p.textContent;
-            const update = (fmt: LyricStyle) => {
-                p.textContent = g2mm(raw, fmt);
-            };
-            update((localStorage.getItem("lyrics-format") ?? "genius") as LyricStyle);
-            document.addEventListener(
-                "lyrics-format-change",
-                (e: Event) => update((e as CustomEvent<LyricStyle>).detail),
-            );
+    document.querySelectorAll<HTMLElement>("p.lyrics").forEach((p) => {
+        const raw = p.textContent;
+        const update = (s: LyricStyle) => (p.textContent = g2mm(raw, s));
+        document.addEventListener("lyrics-style-change", (e) => {
+            update((e as CustomEvent<LyricStyle>).detail);
         });
+        const saved = localStorage.getItem("lyrics-style") ?? "genius";
+        update(saved as LyricStyle);
+    });
 
     document
-        .querySelectorAll<HTMLButtonElement>("button.track-clipboard")
+        .querySelectorAll<HTMLElement>("button.track-clipboard")
         .forEach((btn) => {
             const p = btn.closest(".track")?.querySelector("p.lyrics");
             if (!p) return;
             btn.addEventListener("click", () => {
                 navigator.clipboard
                     .writeText(p.textContent)
-                    .then(() => {
-                        btn.innerHTML = "Copied Lyrics";
-                    });
+                    .then(() => (btn.innerHTML = "Copied Lyrics"));
             });
         });
 </script>

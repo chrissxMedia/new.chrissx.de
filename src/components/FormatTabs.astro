@@ -8,90 +8,71 @@ const labels: Record<LyricStyle, string> = {
 };
 ---
 
-<div class="format-tabs" role="tablist" aria-label="Lyrics format">
-    <span class="format-tabs-thumb" aria-hidden="true"></span>
-    {(["genius", "musixmatch", "plain"] as const).map((f) => (
-        <button
-            type="button"
-            role="tab"
-            data-format={f}
-            aria-selected={f === "genius"}
-        >
-            {labels[f]}
-        </button>
-    ))}
+<div class="style-tabs" role="tablist" aria-label="Lyrics style">
+    <span style={{ transition: "none" }} aria-hidden="true"></span>
+    {
+        Object.entries(labels).map(([f, label]) => (
+            <button
+                type="button"
+                role="tab"
+                data-style={f}
+                aria-selected="false"
+            >
+                {label}
+            </button>
+        ))
+    }
 </div>
 
 <script>
     import type { LyricStyle } from "g2mm";
 
-    const tabs = document.querySelector<HTMLDivElement>(".format-tabs");
-    if (tabs) {
-        const buttons = Array.from(
-            tabs.querySelectorAll<HTMLButtonElement>("button[data-format]"),
-        );
-        const thumb =
-            tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
+    const tabs = document.querySelector("div.style-tabs")!;
+    const btns = Array.from(tabs.querySelectorAll<HTMLElement>("button"));
+    const thumb = tabs.querySelector<HTMLElement>("span")!;
 
-        function positionSelected() {
-            const sel =
-                buttons.find((b) => b.getAttribute("aria-selected") === "true") ??
-                null;
-            if (!sel) return;
-            thumb.style.width = `${sel.offsetWidth}px`;
-            thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
-        }
-
-        function apply(f: LyricStyle, persist: boolean, emit: boolean) {
-            buttons.forEach((b) =>
-                b.setAttribute("aria-selected", String(b.dataset.format === f)),
-            );
-            positionSelected();
-            if (persist) {
-                try {
-                    localStorage.setItem("lyrics-format", f);
-                } catch {
-                    // ignore storage failures
-                }
-            }
-            if (emit) {
-                document.dispatchEvent(
-                    new CustomEvent<LyricStyle>("lyrics-format-change", {
-                        detail: f,
-                    }),
-                );
-            }
-        }
-
-        apply(
-            (localStorage.getItem("lyrics-format") ?? "genius") as LyricStyle,
-            false,
-            false,
-        );
-
-        buttons.forEach((b) =>
-            b.addEventListener("click", () =>
-                apply(b.dataset.format as LyricStyle, true, true),
-            ),
-        );
-
-        new ResizeObserver(positionSelected).observe(tabs);
-        window.addEventListener("load", positionSelected);
+    function updateThumb() {
+        const sel = btns.find((b) => b.ariaSelected === "true");
+        if (!sel) return;
+        thumb.style.width = `${sel.offsetWidth}px`;
+        thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
     }
+
+    function apply(s: LyricStyle) {
+        btns.forEach((b) => (b.ariaSelected = String(b.dataset.style === s)));
+        updateThumb();
+    }
+
+    function persistAndEmit(s: LyricStyle) {
+        localStorage.setItem("lyrics-style", s);
+        const e = new CustomEvent("lyrics-style-change", { detail: s });
+        document.dispatchEvent(e);
+    }
+
+    btns.forEach((b) =>
+        b.addEventListener("click", () => {
+            thumb.style.transition = "";
+            apply(b.dataset.style as LyricStyle);
+            persistAndEmit(b.dataset.style as LyricStyle);
+        }),
+    );
+
+    apply((localStorage.getItem("lyrics-style") ?? "genius") as LyricStyle);
+    new ResizeObserver(updateThumb).observe(tabs);
 </script>
 
 <style>
-    .format-tabs {
+    .style-tabs {
         display: inline-flex;
         gap: 4px;
         padding: 4px;
         position: relative;
         background-color: black;
-        border: 1px solid #fff;
+        border: 1px solid white;
         border-radius: 999px;
     }
 
-    .format-tabs-thumb {
+    span {
         position: absolute;
         top: 4px;
         bottom: 4px;
@@ -105,7 +86,7 @@ const labels: Record<LyricStyle, string> = {
         pointer-events: none;
     }
 
-    .format-tabs button {
+    button {
         position: relative;
         z-index: 1;
         border: none;
@@ -120,17 +101,12 @@ const labels: Record<LyricStyle, string> = {
         transition: color 180ms ease;
     }
 
-    .format-tabs button[aria-selected="true"] {
-        color: #ffffff;
+    button[aria-selected="true"] {
+        color: white;
         font-weight: 600;
     }
 
-    .format-tabs button:hover {
-        color: #ffffff;
-    }
-
-    .format-tabs button:focus-visible {
-        outline: 2px solid #ffffff;
-        outline-offset: 1px;
+    button:hover {
+        color: white;
     }
 </style>

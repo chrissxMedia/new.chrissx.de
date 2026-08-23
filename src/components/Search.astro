@@ -1,11 +1,11 @@
 ---
 const base = "/experiments/lyrics/";
-const bundle = `${base}/search/`;
+const bundle = `${base}search/`;
 ---
 
 {
     import.meta.env.DEV ? (
-        <p>Search is not available in dev mode.</p>
+        <p {...Astro.props}>Search is not available in dev mode.</p>
     ) : (
         <link href={`${bundle}pagefind-component-ui.css`} rel="stylesheet" />
         <script src={`${bundle}pagefind-component-ui.js`} is:inline type="module" />

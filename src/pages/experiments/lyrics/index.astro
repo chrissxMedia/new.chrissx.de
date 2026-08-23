@@ -4,7 +4,7 @@ import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
 ---
 
-<LyricsLayout title="chrissx Media Lyrics Department">
+<LyricsLayout>
     {albums.toReversed().map((a) => <Album {...a} />)}
 </LyricsLayout>
 

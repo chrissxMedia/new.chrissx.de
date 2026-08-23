@@ -3,7 +3,13 @@ import Layout from "./Layout.astro";
 import Search from "../components/Search.astro";
 import FormatTabs from "../components/FormatTabs.astro";
 
-const { title } = Astro.props;
+interface Props {
+    title?: string;
+}
+
+let { title } = Astro.props;
+const x = "chrissx Media Lyrics Department";
+title = title ? `${title} | ${x}` : x;
 ---
 
 <Layout {title}>

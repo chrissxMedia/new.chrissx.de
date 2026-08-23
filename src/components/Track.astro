@@ -20,14 +20,14 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
 
 <script>
     import g2mm from "g2mm";
+    import type { LyricStyle } from "g2mm";
     import {
         DEFAULT_FORMAT,
         FORMAT_EVENT,
         STORAGE_KEY,
-        type Format,
     } from "../lyrics-format";
 
-    function stored(): Format {
+    function stored(): LyricStyle {
         try {
             const v = localStorage.getItem(STORAGE_KEY);
             return v === "genius" || v === "musixmatch" || v === "plain"
@@ -42,13 +42,13 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
         .querySelectorAll<HTMLElement>("p.lyrics")
         .forEach((p) => {
             const raw = p.textContent;
-            const update = (fmt: Format) => {
+            const update = (fmt: LyricStyle) => {
                 p.textContent = g2mm(raw, fmt);
             };
             update(stored());
             document.addEventListener(
                 FORMAT_EVENT,
-                (e: Event) => update((e as CustomEvent<Format>).detail),
+                (e: Event) => update((e as CustomEvent<LyricStyle>).detail),
             );
         });
 

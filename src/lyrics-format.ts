@@ -1,8 +1,8 @@
-export type Format = "genius" | "musixmatch" | "plain";
+import type { LyricStyle } from "g2mm";
 
-export const FORMATS: [Format, ...Format[]] = ["genius", "musixmatch", "plain"];
+export const FORMATS = ["genius", "musixmatch", "plain"] as const;
 
-export const DEFAULT_FORMAT: Format = "genius";
+export const DEFAULT_FORMAT: LyricStyle = "genius";
 
 export const FORMAT_EVENT = "lyrics-format-change";
 

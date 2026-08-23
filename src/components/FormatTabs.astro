@@ -1,11 +1,11 @@
 ---
+import type { LyricStyle } from "g2mm";
 import {
     DEFAULT_FORMAT,
     FORMATS,
-    type Format,
 } from "../lyrics-format";
 
-const labels: Record<Format, string> = {
+const labels: Record<LyricStyle, string> = {
     genius: "Genius",
     musixmatch: "Musixmatch",
     plain: "Plain",
@@ -27,11 +27,11 @@ const labels: Record<Format, string> = {
 </div>
 
 <script>
+    import type { LyricStyle } from "g2mm";
     import {
         DEFAULT_FORMAT,
         FORMAT_EVENT,
         STORAGE_KEY,
-        type Format,
     } from "../lyrics-format";
 
     const tabs = document.querySelector<HTMLDivElement>(".format-tabs");
@@ -41,7 +41,7 @@ const labels: Record<Format, string> = {
         );
         const thumb =
             tabs.querySelector<HTMLElement>(".format-tabs-thumb")!;
-        function stored(): Format {
+        function stored(): LyricStyle {
             try {
                 const v = localStorage.getItem(STORAGE_KEY);
                 return v === "genius" || v === "musixmatch" || v === "plain"
@@ -61,7 +61,7 @@ const labels: Record<Format, string> = {
             thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
         }
 
-        function apply(f: Format, persist: boolean, emit: boolean) {
+        function apply(f: LyricStyle, persist: boolean, emit: boolean) {
             buttons.forEach((b) =>
                 b.setAttribute("aria-selected", String(b.dataset.format === f)),
             );
@@ -75,7 +75,7 @@ const labels: Record<Format, string> = {
             }
             if (emit) {
                 document.dispatchEvent(
-                    new CustomEvent<Format>(FORMAT_EVENT, { detail: f }),
+                    new CustomEvent<LyricStyle>(FORMAT_EVENT, { detail: f }),
                 );
             }
         }
@@ -84,7 +84,7 @@ const labels: Record<Format, string> = {
 
         buttons.forEach((b) =>
             b.addEventListener("click", () =>
-                apply(b.dataset.format as Format, true, true),
+                apply(b.dataset.format as LyricStyle, true, true),
             ),
         );
 

@@ -40,7 +40,7 @@ export const album = z.object({
     tracks: a.tracks.map(t => ({ ...t, artists: t.artists ?? a.artists })),
 }));
 export type album = z.infer<typeof album>;
-export type track = z.infer<typeof album>["tracks"][number];
+export type track = album["tracks"][number];
 
 export const albums: album[] = z.array(album).nonempty().parse(YAML.load(yalbums));
 export const tracks: track[] = albums.flatMap(a => a.tracks);

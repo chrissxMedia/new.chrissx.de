@@ -6,7 +6,7 @@ const { name, upc, artists, release, tracks } = Astro.props;
 ---
 
 <div>
-    <a href={`/experiments/lyrics/${upc?.toString()}`} id={upc?.toString()}>
+    <a href={`/experiments/lyrics/${upc}`} id={upc}>
         {name} by {artists.join(", ")}
     </a>
     <span>

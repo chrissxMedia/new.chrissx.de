@@ -51,13 +51,14 @@ const labels: Record<LyricStyle, string> = {
 
     btns.forEach((b) =>
         b.addEventListener("click", () => {
-            thumb.style.transition = "";
             apply(b.dataset.style as LyricStyle);
             persistAndEmit(b.dataset.style as LyricStyle);
         }),
     );
 
     apply((localStorage.getItem("lyrics-style") ?? "genius") as LyricStyle);
+    thumb.getBoundingClientRect();
+    thumb.style.transition = "";
     new ResizeObserver(updateThumb).observe(tabs);
 </script>
 

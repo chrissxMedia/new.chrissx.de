@@ -19,15 +19,16 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
     import g2mm from "g2mm";
     import type { LyricStyle } from "g2mm";
 
-    document.querySelectorAll<HTMLElement>("p.lyrics").forEach((p) => {
-        const raw = p.textContent;
-        const update = (s: LyricStyle) => (p.textContent = g2mm(raw, s));
-        document.addEventListener("lyrics-style-change", (e) => {
-            update((e as CustomEvent<LyricStyle>).detail);
-        });
-        const saved = localStorage.getItem("lyrics-style") ?? "genius";
-        update(saved as LyricStyle);
+    const ps = [...document.querySelectorAll<HTMLElement>("p.lyrics")].map(
+        (el) => ({ el, raw: el.textContent }),
+    );
+    const update = (s: LyricStyle) =>
+        ps.forEach(({ el, raw }) => (el.textContent = g2mm(raw, s)));
+    document.addEventListener("lyrics-style-change", (e) => {
+        update((e as CustomEvent<LyricStyle>).detail);
     });
+    const saved = localStorage.getItem("lyrics-style") ?? "genius";
+    update(saved as LyricStyle);
 
     document
         .querySelectorAll<HTMLElement>("button.track-clipboard")

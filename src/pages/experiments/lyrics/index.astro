@@ -1,11 +1,13 @@
 ---
 import LyricsLayout from "../../../layouts/LyricsLayout.astro";
-import { albums } from "../../../lib";
 import Album from "../../../components/Album.astro";
+import { getCollection } from "astro:content";
+
+const albums = await getCollection("albums");
 ---
 
 <LyricsLayout>
-    {albums.toReversed().map((a) => <Album {...a} />)}
+    {albums.toSorted((a, b) => b.data.release.localeCompare(a.data.release)).map((a) => <Album {...a.data} />)}
 </LyricsLayout>
 
 <style>

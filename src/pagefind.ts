@@ -5,7 +5,7 @@
 import type { AstroIntegration, HookParameters } from "astro";
 import { fileURLToPath } from "node:url";
 import * as pagefind from "pagefind";
-import { tracks } from "./lib";
+import { loadAlbums } from "./lib";
 
 export async function lyricsPagefind({ dir, logger: astroLogger }:
     Pick<HookParameters<"astro:build:done">, "dir" | "logger">) {
@@ -27,6 +27,7 @@ export async function lyricsPagefind({ dir, logger: astroLogger }:
 
         const { index } = assertPagefindResponse(newIndexResp);
 
+        const tracks = (await loadAlbums()).flatMap(a => a.tracks);
         for (const t of tracks) {
             await index.addCustomRecord({
                 url: t.isrc ?? "XXX", // FIXME

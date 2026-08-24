@@ -4,10 +4,11 @@ import Album from "../../../components/Album.astro";
 import { getCollection } from "astro:content";
 
 const albums = await getCollection("albums");
+albums.sort((a, b) => b.data.release.localeCompare(a.data.release));
 ---
 
 <LyricsLayout>
-    {albums.toSorted((a, b) => b.data.release.localeCompare(a.data.release)).map((a) => <Album {...a.data} />)}
+    {albums.map((a) => <Album upc={a.id} {...a.data} />)}
 </LyricsLayout>
 
 <style>

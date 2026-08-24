@@ -9,14 +9,13 @@ export async function getStaticPaths() {
 }
 
 const { upc } = Astro.params;
-const entry = await getEntry("albums", upc);
-const album = entry?.data;
+const album = await getEntry("albums", upc);
 
 if (!album) {
     return new Response("Album not found", { status: 404 });
 }
 ---
 
-<LyricsLayout title={album.name}>
-    <Album {...album} />
+<LyricsLayout title={album.data.name}>
+    <Album {upc} {...album.data} />
 </LyricsLayout>

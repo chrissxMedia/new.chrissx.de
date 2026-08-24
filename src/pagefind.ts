@@ -5,9 +5,17 @@
 import type { AstroIntegration, HookParameters } from "astro";
 import { fileURLToPath } from "node:url";
 import * as pagefind from "pagefind";
-import { loadAlbums } from "./lib";
+import { album, type track } from "./lib";
+import * as YAML from "js-yaml";
+import { readFile } from "node:fs/promises";
 
-export async function lyricsPagefind({ dir, logger: astroLogger }:
+async function loadTracks(): Promise<track[]> {
+    const files = Object.keys(import.meta.glob("./data/albums/*.yaml")).map((f) => import.meta.resolve(f));
+    const contents = await Promise.all(files.map(f => readFile(new URL(f), { encoding: "utf-8" })));
+    return contents.map((x) => album.parse(YAML.load(x))).flatMap(({ tracks }) => tracks);
+}
+
+async function lyricsPagefind({ dir, logger: astroLogger }:
     Pick<HookParameters<"astro:build:done">, "dir" | "logger">) {
     const logger = astroLogger.fork("pagefind");
 
@@ -24,18 +32,15 @@ export async function lyricsPagefind({ dir, logger: astroLogger }:
         logger.info("Building search index...");
 
         const newIndexResp = await pagefind.createIndex();
-
         const { index } = assertPagefindResponse(newIndexResp);
 
-        const tracks = (await loadAlbums()).flatMap(a => a.tracks);
-        for (const t of tracks) {
-            await index.addCustomRecord({
-                url: t.isrc ?? "XXX", // FIXME
-                content: t.lyrics ?? "",
-                language: "de",
-                meta: { title: `${t.name} by ${t.artists.join(", ")}` },
-            }).then(assertPagefindResponse);
-        }
+        const tracks = await loadTracks();
+        await Promise.all(tracks.map(t => index.addCustomRecord({
+            url: t.isrc, // FIXME: should isrc be optional to begin with?
+            content: t.lyrics,
+            language: "de",
+            meta: { title: `${t.name} by ${t.artists.join(", ")}` },
+        }).then(assertPagefindResponse)));
         logger.info(`Found ${await index.getFiles().then(x => x.files.length)} tracks.`);
 
         const writeFilesResponse = await index.writeFiles({

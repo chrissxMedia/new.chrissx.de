@@ -1,11 +1,10 @@
-- name: Dank Donkz
-  artists:
-    - Mister Häfftling
-  upc: 5059366452706
-  release: 2018-10-25
-  cover: https://storage.googleapis.com/routenote-release-cloudfiles/5059366452706/dank_donkz1568992963.jpg
-  link: https://push.fm/fl/dankdonkz
-  tracks:
-    - name: Dank Donkz
-      isrc: GBSMU6919578
-      length: 0:31
+name: Dank Donkz
+artists:
+  - Mister Häfftling
+release: 2018-10-25
+cover: https://storage.googleapis.com/routenote-release-cloudfiles/5059366452706/dank_donkz1568992963.jpg
+link: https://push.fm/fl/dankdonkz
+tracks:
+  - name: Dank Donkz
+    isrc: GBSMU6919578
+    length: 0:31

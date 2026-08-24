@@ -1,102 +1,101 @@
-- name: Kurva
-  artists:
-    - chrissx
-  upc: 5059654923543
-  release: 2020-11-06
-  cover: https://storage.googleapis.com/routenote-release-cloudfiles/5059654923543/kurva1604087451.jpg
-  tracks:
-    - name: Kurva - OG
-      isrc: GBSMU8969187
-      length: 0:53
-      lyrics: |
-        [Part 1: chrissx]
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
+name: Kurva
+artists:
+  - chrissx
+release: 2020-11-06
+cover: https://storage.googleapis.com/routenote-release-cloudfiles/5059654923543/kurva1604087451.jpg
+tracks:
+  - name: Kurva - OG
+    isrc: GBSMU8969187
+    length: 0:53
+    lyrics: |
+      [Part 1: chrissx]
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
 
-        [Hook: Frederik Albl]
-        Kurva
-        Kurva
-        Kurva
-        Kurva
-        Ku-Ku-Ku-Ku-Ku-Kurva
-        Kurva
-        Kurva
-        Kurva
-    - name: Kurva - Extended
-      isrc: GBSMU8969188
-      length: 1:44
-      lyrics: |
-        [Part 1: chrissx]
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
+      [Hook: Frederik Albl]
+      Kurva
+      Kurva
+      Kurva
+      Kurva
+      Ku-Ku-Ku-Ku-Ku-Kurva
+      Kurva
+      Kurva
+      Kurva
+  - name: Kurva - Extended
+    isrc: GBSMU8969188
+    length: 1:44
+    lyrics: |
+      [Part 1: chrissx]
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
 
-        [Hook: Frederik Albl]
-        Kurva
-        Kurva
-        Kurva
-        Kurva
-        Ku-Ku-Ku-Ku-Ku-Kurva
-        Kurva
-        Kurva
-        Kurva
+      [Hook: Frederik Albl]
+      Kurva
+      Kurva
+      Kurva
+      Kurva
+      Ku-Ku-Ku-Ku-Ku-Kurva
+      Kurva
+      Kurva
+      Kurva
 
-        [Part 2: chrissx]
-        Je tu Pokémon
-        Chtěl bych ho zničit, jo
-        Sladký malý Weedle
-        Ráda bych to šukat, jo
+      [Part 2: chrissx]
+      Je tu Pokémon
+      Chtěl bych ho zničit, jo
+      Sladký malý Weedle
+      Ráda bych to šukat, jo
 
-        [Hook: Frederik Albl]
-        Kurva
-        Kurva
-        Kurva
-        Kurva
-        Kur-Kurva
-        Kur-Kurva
-        Ku-Ku-Kurva
-        Kurva
-    - name: Kurva - Remastered
-      isrc: GBSMU8969189
-      length: 1:44
-      lyrics: |
-        [Part 1: chrissx]
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
-        Zdeněk je v prdeli
-        Zdeněk je v prdeli
-        Frederik je v prdeli
+      [Hook: Frederik Albl]
+      Kurva
+      Kurva
+      Kurva
+      Kurva
+      Kur-Kurva
+      Kur-Kurva
+      Ku-Ku-Kurva
+      Kurva
+  - name: Kurva - Remastered
+    isrc: GBSMU8969189
+    length: 1:44
+    lyrics: |
+      [Part 1: chrissx]
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
+      Zdeněk je v prdeli
+      Zdeněk je v prdeli
+      Frederik je v prdeli
 
-        [Hook: Frederik Albl]
-        Kurva
-        Kurva
-        Kurva
-        Kurva
-        Ku-Ku-Ku-Ku-Ku-Kurva
-        Kurva
-        Kurva
-        Kurva
+      [Hook: Frederik Albl]
+      Kurva
+      Kurva
+      Kurva
+      Kurva
+      Ku-Ku-Ku-Ku-Ku-Kurva
+      Kurva
+      Kurva
+      Kurva
 
-        [Part 2: chrissx]
-        Je tu Pokémon
-        Chtěl bych ho zničit, jo
-        Sladký malý Weedle
-        Ráda bych to šukat, jo
+      [Part 2: chrissx]
+      Je tu Pokémon
+      Chtěl bych ho zničit, jo
+      Sladký malý Weedle
+      Ráda bych to šukat, jo
 
-        [Hook: Frederik Albl]
-        Kurva
-        Kurva
-        Kurva
-        Kurva
-        Kur-Kurva
-        Kur-Kurva
-        Ku-Ku-Kurva
-        Kurva
+      [Hook: Frederik Albl]
+      Kurva
+      Kurva
+      Kurva
+      Kurva
+      Kur-Kurva
+      Kur-Kurva
+      Ku-Ku-Kurva
+      Kurva

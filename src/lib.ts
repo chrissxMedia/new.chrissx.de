@@ -7,15 +7,14 @@ export function csv(csv: string): [string[], string[][]] {
     return [headers, lines];
 }
 
-const length = z.string()
-    .regex(/^(?:\d+|\d+:\d{2})$/, "length must be seconds or m:ss")
-    .transform(v => {
-        if (/^\d+$/.test(v)) {
-            const n = Number(v);
-            return `${Math.floor(n / 60)}:${String(n % 60).padStart(2, "0")}`;
-        }
-        return v;
-    });
+const numToTime = (n: number) => `${Math.floor(n / 60)}:${String(n % 60).padStart(2, "0")}`;
+
+const length = z.union([
+    z.string()
+        .regex(/^\d+(:\d{2})?$/, "length must be seconds or m:ss")
+        .transform(v => /^\d+$/.test(v) ? numToTime(Number(v)) : v),
+    z.number().transform(numToTime),
+]);
 
 const track = z.object({
     name: z.string(),

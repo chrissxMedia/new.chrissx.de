@@ -44,7 +44,7 @@ async function lyricsPagefind({ dir, logger: astroLogger }:
         logger.info(`Found ${await index.getFiles().then(x => x.files.length)} tracks.`);
 
         const writeFilesResponse = await index.writeFiles({
-            outputPath: fileURLToPath(new URL("./experiments/lyrics/search/", dir)),
+            outputPath: fileURLToPath(new URL("./lyrics/search/", dir)),
         });
         assertPagefindResponse(writeFilesResponse);
 

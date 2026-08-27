@@ -5,7 +5,7 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
 ---
 
 <div class="track">
-    <a href={`/experiments/lyrics/${isrc}`} id={isrc}>
+    <a href={`/lyrics/${isrc}`} id={isrc}>
         {name} by {artists.join(", ")}
     </a>
     <span>

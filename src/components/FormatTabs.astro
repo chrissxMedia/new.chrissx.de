@@ -1,0 +1,109 @@
+---
+import type { LyricStyle } from "g2mm";
+
+const labels: Record<LyricStyle, string> = {
+    genius: "Genius",
+    musixmatch: "Musixmatch",
+    plain: "Plain",
+};
+---
+
+<div class="style-tabs" role="tablist" aria-label="Lyrics style">
+    <span style={{ transition: "none" }} aria-hidden="true"></span>
+    {
+        Object.entries(labels).map(([f, label]) => (
+            <button
+                type="button"
+                role="tab"
+                data-style={f}
+                aria-selected="false"
+            >
+                {label}
+            </button>
+        ))
+    }
+</div>
+
+<script>
+    const tabs = document.querySelector("div.style-tabs")!;
+    const btns = Array.from(tabs.querySelectorAll<HTMLElement>("button"));
+    const thumb = tabs.querySelector<HTMLElement>("span")!;
+
+    function updateThumb() {
+        const sel = btns.find((b) => b.ariaSelected === "true");
+        if (!sel) return;
+        thumb.style.width = `${sel.offsetWidth}px`;
+        thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
+    }
+
+    function apply(s: string) {
+        btns.forEach((b) => (b.ariaSelected = String(b.dataset.style === s)));
+        updateThumb();
+    }
+
+    btns.forEach((b) =>
+        b.addEventListener("click", () => {
+            const style = b.dataset.style!;
+            apply(style);
+
+            localStorage.setItem("lyrics-style", style);
+            const e = new CustomEvent("lyrics-style-change", { detail: style });
+            document.dispatchEvent(e);
+        }),
+    );
+
+    apply(localStorage.getItem("lyrics-style") ?? "genius");
+    thumb.getBoundingClientRect();
+    thumb.style.transition = "";
+    new ResizeObserver(updateThumb).observe(tabs);
+</script>
+
+<style>
+    .style-tabs {
+        display: inline-flex;
+        gap: 4px;
+        padding: 4px;
+        position: relative;
+        background-color: black;
+        border: 1px solid white;
+        border-radius: 999px;
+    }
+
+    span {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: 0;
+        background-color: rgb(var(--cmblack));
+        border-radius: 999px;
+        transition:
+            width 180ms ease,
+            transform 180ms ease;
+        pointer-events: none;
+    }
+
+    button {
+        position: relative;
+        z-index: 1;
+        border: none;
+        background: transparent;
+        color: #c0c0c0;
+        font: inherit;
+        font-size: 14px;
+        line-height: 1;
+        padding: 8px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: color 180ms ease;
+    }
+
+    button[aria-selected="true"] {
+        color: white;
+        font-weight: 600;
+    }
+
+    button:hover {
+        color: white;
+    }
+</style>

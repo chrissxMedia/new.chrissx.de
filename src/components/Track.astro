@@ -1,0 +1,83 @@
+---
+import type { track } from "../lib";
+export type Props = track;
+const { name, isrc, length, lyrics, artists } = Astro.props;
+---
+
+<div class="track">
+    <a href={`/lyrics/${isrc}`} id={isrc}>
+        {name} by {artists.join(", ")}
+    </a>
+    <span>
+        {lyrics && <button class="track-clipboard">Copy Lyrics</button>} Length: {
+            length
+        }, ISRC: {isrc}
+    </span>
+    {lyrics && <p class="lyrics">{lyrics}</p>}
+</div>
+
+<script>
+    import { g2mm, type LyricStyle } from "g2mm";
+
+    const ps = [...document.querySelectorAll<HTMLElement>("p.lyrics")].map(
+        (el) => ({ el, raw: el.textContent }),
+    );
+    const update = (s: LyricStyle) =>
+        ps.forEach(({ el, raw }) => (el.textContent = g2mm(raw, s)));
+    document.addEventListener("lyrics-style-change", (e) => {
+        update((e as CustomEvent<LyricStyle>).detail);
+    });
+    const saved = localStorage.getItem("lyrics-style") ?? "genius";
+    update(saved as LyricStyle);
+
+    document
+        .querySelectorAll<HTMLElement>("button.track-clipboard")
+        .forEach((btn) => {
+            const p = btn.closest(".track")?.querySelector("p.lyrics");
+            if (!p) return;
+            btn.addEventListener("click", () => {
+                navigator.clipboard
+                    .writeText(p.textContent)
+                    .then(() => (btn.innerHTML = "Copied Lyrics"));
+            });
+        });
+</script>
+
+<style>
+    .track {
+        background-color: #101010;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    a,
+    span {
+        font-size: 24px;
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+
+    span {
+        float: right;
+        font-weight: 500;
+    }
+
+    .track-clipboard {
+        border-radius: 20px;
+        background-color: #101010;
+        color: white;
+        border-color: white;
+        margin-right: 10px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .lyrics {
+        white-space: pre-wrap;
+    }
+</style>

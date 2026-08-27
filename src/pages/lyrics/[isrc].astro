@@ -1,0 +1,22 @@
+---
+import LyricsLayout from "../../layouts/LyricsLayout.astro";
+import Track from "../../components/Track.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const tracks = (await getCollection("albums")).flatMap((a) => a.data.tracks);
+    return tracks.map(({ isrc }) => ({ params: { isrc } }));
+}
+
+const { isrc } = Astro.params;
+const tracks = (await getCollection("albums")).flatMap((a) => a.data.tracks);
+const track = tracks.find((t) => t.isrc === isrc);
+
+if (!track) {
+    return new Response("Track not found", { status: 404 });
+}
+---
+
+<LyricsLayout title={track.name}>
+    <Track {...track} />
+</LyricsLayout>

@@ -1,0 +1,21 @@
+---
+import LyricsLayout from "../../layouts/LyricsLayout.astro";
+import Album from "../../components/Album.astro";
+import { getCollection, getEntry } from "astro:content";
+
+export async function getStaticPaths() {
+    const albums = await getCollection("albums");
+    return albums.map(({ id }) => ({ params: { upc: id } }));
+}
+
+const { upc } = Astro.params;
+const album = await getEntry("albums", upc);
+
+if (!album) {
+    return new Response("Album not found", { status: 404 });
+}
+---
+
+<LyricsLayout title={album.data.name}>
+    <Album {upc} {...album.data} />
+</LyricsLayout>

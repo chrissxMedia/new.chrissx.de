@@ -1,0 +1,42 @@
+---
+import Layout from "./Layout.astro";
+import Search from "../components/Search.astro";
+import FormatTabs from "../components/FormatTabs.astro";
+
+interface Props {
+    title?: string;
+}
+
+let { title } = Astro.props;
+const x = "chrissx Media Lyrics Department";
+title = title ? `${title} | ${x}` : x;
+---
+
+<Layout {title}>
+    <p>
+        All content displayed on this web page is the intellectual property of
+        chrissx Media. All rights reserved. Do not distribute without written
+        permission.
+    </p>
+    <div>
+        <FormatTabs />
+        <Search class="search" />
+    </div>
+    <slot />
+</Layout>
+
+<style>
+    :global(main) {
+        font-family: var(--sans-serif);
+    }
+    div {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    div > .search {
+        flex: 0 0 auto;
+        margin-left: auto;
+    }
+</style>

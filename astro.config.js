@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
+import pagefind from './src/pagefind';
 
-// https://astro.build/config
 export default defineConfig({
+    integrations: [pagefind],
 });

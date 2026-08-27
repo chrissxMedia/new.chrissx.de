@@ -1,0 +1,41 @@
+---
+import Track from "./Track.astro";
+import type { album } from "../lib";
+export type Props = album & { upc: string };
+const { name, upc, artists, release, tracks } = Astro.props;
+---
+
+<div>
+    <a href={`/lyrics/${upc}`} id={upc}>
+        {name} by {artists.join(", ")}
+    </a>
+    <span>
+        Released {release}, UPC: {upc}
+    </span>
+    {tracks.map((t) => <Track {...t} />)}
+</div>
+
+<style>
+    div {
+        background-color: #0a0a0a;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    a,
+    span {
+        font-size: 32px;
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+
+    span {
+        font-weight: 500;
+        float: right;
+    }
+</style>

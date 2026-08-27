@@ -1,0 +1,19 @@
+---
+import LyricsLayout from "../../layouts/LyricsLayout.astro";
+import Album from "../../components/Album.astro";
+import { getCollection } from "astro:content";
+
+const albums = await getCollection("albums");
+albums.sort((a, b) => b.data.release.localeCompare(a.data.release));
+---
+
+<LyricsLayout>
+    {albums.map((a) => <Album upc={a.id} {...a.data} />)}
+</LyricsLayout>
+
+<style>
+    :global(body) {
+        padding: 8px;
+        font-size: 12pt;
+    }
+</style>

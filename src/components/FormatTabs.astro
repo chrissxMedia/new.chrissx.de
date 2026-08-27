@@ -25,8 +25,6 @@ const labels: Record<LyricStyle, string> = {
 </div>
 
 <script>
-    import type { LyricStyle } from "g2mm";
-
     const tabs = document.querySelector("div.style-tabs")!;
     const btns = Array.from(tabs.querySelectorAll<HTMLElement>("button"));
     const thumb = tabs.querySelector<HTMLElement>("span")!;
@@ -38,25 +36,23 @@ const labels: Record<LyricStyle, string> = {
         thumb.style.transform = `translateX(${sel.offsetLeft}px)`;
     }
 
-    function apply(s: LyricStyle) {
+    function apply(s: string) {
         btns.forEach((b) => (b.ariaSelected = String(b.dataset.style === s)));
         updateThumb();
     }
 
-    function persistAndEmit(s: LyricStyle) {
-        localStorage.setItem("lyrics-style", s);
-        const e = new CustomEvent("lyrics-style-change", { detail: s });
-        document.dispatchEvent(e);
-    }
-
     btns.forEach((b) =>
         b.addEventListener("click", () => {
-            apply(b.dataset.style as LyricStyle);
-            persistAndEmit(b.dataset.style as LyricStyle);
+            const style = b.dataset.style!;
+            apply(style);
+
+            localStorage.setItem("lyrics-style", style);
+            const e = new CustomEvent("lyrics-style-change", { detail: style });
+            document.dispatchEvent(e);
         }),
     );
 
-    apply((localStorage.getItem("lyrics-style") ?? "genius") as LyricStyle);
+    apply(localStorage.getItem("lyrics-style") ?? "genius");
     thumb.getBoundingClientRect();
     thumb.style.transition = "";
     new ResizeObserver(updateThumb).observe(tabs);

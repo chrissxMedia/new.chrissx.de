@@ -17,8 +17,7 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
 </div>
 
 <script>
-    import g2mm from "g2mm";
-    import type { LyricStyle } from "g2mm";
+    import { g2mm, type LyricStyle } from "g2mm";
 
     const ps = [...document.querySelectorAll<HTMLElement>("p.lyrics")].map(
         (el) => ({ el, raw: el.textContent }),

@@ -18,7 +18,7 @@ const length = z.union([
 
 const track = z.object({
     name: z.string(),
-    isrc: z.string().regex(/^[A-Z]{2}[A-Z0-9]{3}\d{7}$/).optional(),
+    isrc: z.string().regex(/^[A-Z]{2}[A-Z0-9]{3}\d{7}$/),
     length,
     lyrics: z.string().optional(),
     artists: z.array(z.string()).nonempty().optional(),
@@ -36,7 +36,7 @@ export const album = z.object({
     link: "",
     ...a,
     release: dayjs(a.release).format("YYYY-MM-DD"),
-    tracks: a.tracks.map(t => ({ isrc: "", lyrics: "", artists: a.artists, ...t })),
+    tracks: a.tracks.map((t) => ({ lyrics: "", artists: a.artists, ...t })),
 }));
 export type album = z.infer<typeof album>;
 export type track = album["tracks"][number];

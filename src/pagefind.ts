@@ -36,7 +36,7 @@ async function lyricsPagefind({ dir, logger: astroLogger }:
 
         const tracks = await loadTracks();
         await Promise.all(tracks.map(t => index.addCustomRecord({
-            url: t.isrc, // FIXME: should isrc be optional to begin with?
+            url: t.isrc,
             content: t.lyrics,
             language: "de",
             meta: { title: `${t.name} by ${t.artists.join(", ")}` },

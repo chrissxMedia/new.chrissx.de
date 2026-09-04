@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import NoticeList from "../components/NoticeList.astro";
 import { getCollection } from "astro:content";
 
-const notices = await getCollection("notices");
+const notices = (await getCollection("notices")).filter((x) => !x.data.archived);
 ---
 
 <Layout title="chrissx Media">
@@ -28,7 +28,8 @@ const notices = await getCollection("notices");
 
     <br /><br />
 
-    <NoticeList {notices}>
+    <NoticeList {notices} placeholder="There are no active notices.">
         <h2 slot="before" id="notices">Notices (upcoming changes and maintenance)</h2>
+        <a slot="after" href="/notices/archive">View archived notices</a>
     </NoticeList>
 </Layout>

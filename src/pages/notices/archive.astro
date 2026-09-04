@@ -1,0 +1,13 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NoticeList from "../../components/NoticeList.astro";
+
+const notices = (await getCollection("notices")).filter((x) => x.data.archived);
+---
+
+<Layout title="Archived notices">
+    <NoticeList {notices}>
+        <h2 slot="before">Archived notices</h2>
+    </NoticeList>
+</Layout>

@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
+import "remark-github-blockquote-alert/alert.css";
 
 type Props = CollectionEntry<"notices"> & { mode: "list" | "standalone" };
 

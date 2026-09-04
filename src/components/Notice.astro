@@ -15,12 +15,12 @@ const { Content } = await render(Astro.props);
     mode === "standalone" ? (
         <div class="title">
             <h2>{title}</h2>
-            <div class="meta" style={{color: archived ? "green" : "red"}}>{date}</div>
+            <span style={{color: archived ? "green" : "red"}}>{date}</span>
         </div>
     ) : (
         <a href={`/notices/${id}`} class="title">
             <h3>{title}</h3>
-            <div class="meta">{date}</div>
+            <span>{date}</span>
         </a>
     )
 }
@@ -32,7 +32,7 @@ const { Content } = await render(Astro.props);
     .md, .title {
         font-family: var(--sans-serif);
     }
-    .meta {
+    span, .md :global(code) {
         font-family: var(--unifont);
     }
     .title {
@@ -41,7 +41,7 @@ const { Content } = await render(Astro.props);
         justify-content: space-between;
         gap: 1em;
     }
-    .meta {
+    span {
         gap: 0.5em;
         height: min-content;
         margin: auto 0;

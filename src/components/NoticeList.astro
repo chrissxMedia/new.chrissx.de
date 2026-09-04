@@ -15,13 +15,11 @@ notices.sort((a, b) => num(b, 0) - num(a, 0) || num(b, 1) - num(a, 1));
 <div>
     <slot name="before" />
     {
-        notices.length ? (
-            notices
-                .flatMap((x) => [<Notice {...x} mode="list" />, <hr />])
-                .slice(0, -1)
-        ) : placeholder ? (
-            <p>{placeholder}</p>
-        ) : null
+        notices.length
+            ? notices
+                  .flatMap((x) => [<Notice {...x} mode="list" />, <hr />])
+                  .slice(0, Astro.slots.has("after") ? undefined : -1)
+            : placeholder && <p>{placeholder}</p>
     }
     <slot name="after" />
 </div>
@@ -34,8 +32,5 @@ notices.sort((a, b) => num(b, 0) - num(a, 0) || num(b, 1) - num(a, 1));
     }
     div {
         font-family: var(--sans-serif);
-    }
-    div :global(code) {
-        font-family: var(--unifont);
     }
 </style>

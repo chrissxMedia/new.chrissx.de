@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry } from "astro:content";
+import Notice from "./Notice.astro";
+
+interface Props {
+    notices: CollectionEntry<"notices">[];
+    placeholder?: string;
+}
+
+const { notices, placeholder } = Astro.props;
+const num = (x: { id: string }, i: number) => Number(x.id.split("/")[i]);
+notices.sort((a, b) => num(b, 0) - num(a, 0) || num(b, 1) - num(a, 1));
+---
+
+<div>
+    <slot name="before" />
+    {
+        notices.length ? (
+            notices
+                .flatMap((x) => [<Notice {...x} mode="list" />, <hr />])
+                .slice(0, -1)
+        ) : placeholder ? (
+            <p>{placeholder}</p>
+        ) : null
+    }
+    <slot name="after" />
+</div>
+
+<style>
+    div :global(h2),
+    div :global(h3),
+    div :global(h4) {
+        margin: 0.25em 0;
+    }
+    div {
+        font-family: var(--sans-serif);
+    }
+    div :global(code) {
+        font-family: var(--unifont);
+    }
+</style>

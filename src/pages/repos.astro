@@ -1,6 +1,6 @@
 ---
 import { Octokit } from "@octokit/rest";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 
 const octokit = new Octokit();
 const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
@@ -10,7 +10,7 @@ const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
 });
 ---
 
-<Layout title="Repos Experiment">
+<Layout title="Repositories">
     <ul>
         {
             repos.map((repo) => (

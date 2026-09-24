@@ -1,5 +1,6 @@
 import { z } from "astro/zod";
 import dayjs from "dayjs";
+import { parseISRC } from "music-codes";
 
 export function csv(csv: string): [string[], string[][]] {
     const lines = csv.split(/[\r\n]+/).filter(e => e).map(e => e.split(','));
@@ -18,7 +19,21 @@ const length = z.union([
 
 const track = z.object({
     name: z.string(),
-    isrc: z.string().regex(/^[A-Z]{2}[A-Z0-9]{3}\d{7}$/),
+    isrc: z.string().transform((value, ctx) => {
+        try {
+            const isrc = parseISRC(value);
+            const { prefix, year, code } = isrc;
+            return {
+                raw: isrc.toString(),
+                pretty: prefix === "USS1Z"
+                    ? undefined
+                    : `${prefix}-${String(year).padStart(2, "0")}-${String(code).padStart(5, "0")}`,
+            };
+        } catch {
+            ctx.addIssue({ code: "custom", message: "Invalid ISRC" });
+            return z.NEVER;
+        }
+    }),
     length,
     lyrics: z.string().optional(),
     artists: z.array(z.string()).nonempty().optional(),

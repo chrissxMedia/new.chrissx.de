@@ -36,7 +36,7 @@ async function lyricsPagefind({ dir, logger: astroLogger }:
 
         const tracks = await loadTracks();
         await Promise.all(tracks.map(t => index.addCustomRecord({
-            url: t.isrc,
+            url: t.isrc.raw,
             content: t.lyrics,
             language: "de",
             meta: { title: `${t.name} by ${t.artists.join(", ")}` },

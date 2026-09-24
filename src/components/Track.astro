@@ -5,13 +5,13 @@ const { name, isrc, length, lyrics, artists } = Astro.props;
 ---
 
 <div class="track">
-    <a href={`/lyrics/${isrc}`} id={isrc}>
+    <a href={`/lyrics/${isrc.raw}`} id={isrc.raw}>
         {name} by {artists.join(", ")}
     </a>
     <span>
         {lyrics && <button class="track-clipboard">Copy Lyrics</button>} Length: {
             length
-        }, ISRC: {isrc}
+        }{isrc.pretty && `, ISRC: ${isrc.pretty}`}
     </span>
     {lyrics && <p class="lyrics">{lyrics}</p>}
 </div>

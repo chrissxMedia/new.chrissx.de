@@ -20,7 +20,7 @@ const tracks = readdirSync(dir)
 
 describe("lyrics", () => {
   for (const t of tracks) {
-    it(`${t.isrc} ${t.name}`, () => {
+    it(`${t.isrc.raw} ${t.name}`, () => {
       assert.equal(g2mm(t.lyrics, "genius"), t.lyrics.trim());
     });
   }

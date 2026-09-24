@@ -5,12 +5,12 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const tracks = (await getCollection("albums")).flatMap((a) => a.data.tracks);
-    return tracks.map(({ isrc }) => ({ params: { isrc } }));
+    return tracks.map(({ isrc }) => ({ params: { isrc: isrc.raw } }));
 }
 
 const { isrc } = Astro.params;
 const tracks = (await getCollection("albums")).flatMap((a) => a.data.tracks);
-const track = tracks.find((t) => t.isrc === isrc);
+const track = tracks.find((t) => t.isrc.raw === isrc);
 
 if (!track) {
     return new Response("Track not found", { status: 404 });

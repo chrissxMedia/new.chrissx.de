@@ -18,6 +18,7 @@
     "dayjs": "^1.0.0",
     "g2mm": "^0.2.3",
     "js-yaml": "^5.3.0",
+    "music-codes": "^0.0.3",
     "pagefind": "^1.5.2",
     "remark-github-blockquote-alert": "^2.1.0"
   },

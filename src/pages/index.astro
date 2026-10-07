@@ -8,17 +8,10 @@ import twitterLogo from "simple-icons/icons/twitter.svg?url&no-inline";
 import mastodonLogo from "simple-icons/icons/mastodon.svg?url&no-inline";
 import githubLogo from "simple-icons/icons/github.svg?url&no-inline";
 import discordLogo from "simple-icons/icons/discord.svg?url&no-inline";
+// TODO: Move the Fux Games logo into cmdesigns.
+import fuxLogo from "../fux-games.png";
 
 const notices = (await getCollection("notices")).filter((x) => !x.data.archived);
-
-const fuxLogo = await fetch("https://fuxgames.com/", { signal: AbortSignal.timeout(5000) })
-    .then(async (response) => {
-        if (!response.ok) return;
-        const html = await response.text();
-        const path = html.match(/<img[^>]+src="([^"]+)"[^>]+alt="Fux Games Logo"/)?.[1];
-        return path ? new URL(path, response.url).href : undefined;
-    })
-    .catch(() => undefined);
 
 const socials = [
     {
@@ -60,7 +53,7 @@ const avatars = await youtubeAvatars(channels.map((channel) => channel.id));
 <Layout title="chrissx Media">
     <h3>Subsidiaries and befriended projects</h3>
     <div class="links projects">
-        <Card title="Fux Games" href="https://fuxgames.com/" image={fuxLogo} />
+        <Card title="Fux Games" href="https://fuxgames.com/" image={fuxLogo.src} />
         <Card href="https://lowlevelmusic.com/">
             <strong class="llm">Low Level Music</strong>
         </Card>

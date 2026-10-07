@@ -21,6 +21,7 @@
     "music-codes": "^0.0.3",
     "pagefind": "^1.5.2",
     "remark-github-blockquote-alert": "^2.1.0",
+    "simple-icons": "^11.15.0",
     "youtubei.js": "^18.1.0"
   },
   "devDependencies": {

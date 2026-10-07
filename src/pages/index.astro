@@ -4,6 +4,10 @@ import NoticeList from "../components/NoticeList.astro";
 import Card from "../components/Card.astro";
 import { youtubeAvatars } from "../youtube";
 import { getCollection } from "astro:content";
+import twitterLogo from "simple-icons/icons/twitter.svg?url&no-inline";
+import mastodonLogo from "simple-icons/icons/mastodon.svg?url&no-inline";
+import githubLogo from "simple-icons/icons/github.svg?url&no-inline";
+import discordLogo from "simple-icons/icons/discord.svg?url&no-inline";
 
 const notices = (await getCollection("notices")).filter((x) => !x.data.archived);
 
@@ -21,25 +25,25 @@ const socials = [
         title: "Twitter",
         subtitle: "@chrissxMedia",
         href: "https://twitter.com/chrissxMedia",
-        image: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/twitter.svg",
+        image: twitterLogo,
     },
     {
         title: "Mastodon",
         subtitle: "@chrissx@mastodon.online",
         href: "https://mastodon.online/@chrissx",
-        image: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/mastodon.svg",
+        image: mastodonLogo,
         rel: "me",
     },
     {
         title: "GitHub",
         subtitle: "@chrissxMedia",
         href: "https://github.com/chrissxMedia",
-        image: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/github.svg",
+        image: githubLogo,
     },
     {
         title: "Discord",
         href: "https://chrissx.de/discord",
-        image: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/discord.svg",
+        image: discordLogo,
     },
 ];
 

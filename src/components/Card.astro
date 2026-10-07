@@ -39,10 +39,10 @@ const { href, title, subtitle, image, rel } = Astro.props;
         height: auto;
         flex-shrink: 0;
     }
-    img[src$=".svg"] {
+    img[src*=".svg"] {
         filter: invert(1);
     }
-    img:not([src$=".svg"]) {
+    img:not([src*=".svg"]) {
         border-radius: 0.5rem;
     }
     span {

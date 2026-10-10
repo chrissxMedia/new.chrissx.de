@@ -5,9 +5,10 @@ import favicon from "../favicon.png";
 export interface Props {
     title: string;
     lang?: string;
+    width?: "normal" | "full" | "content";
 }
 
-const { title, lang = "en" } = Astro.props;
+const { title, lang = "en", width = "normal" } = Astro.props;
 ---
 
 <BaseLayout
@@ -19,29 +20,42 @@ const { title, lang = "en" } = Astro.props;
 >
     <slot name="head" slot="head" />
     <link rel="alternate" type="application/rss+xml" title="chrissx Media notices" href="/notices/rss.xml" slot="head" />
-    <header>
-        <h1><a href="/"><CMText /></a></h1>
-        <nav>
-            <a href="/hmmg">HMMG</a>
-            <a href="/streams">Livestreams</a>
-            <a href="/repos">Repositories</a>
-            <!--<a href="/shop">Merchandise</a>-->
-        </nav>
-    </header>
-    <main>
-        <slot />
-        <Footer start={2018} />
-    </main>
+    <div class:list={["page", width]}>
+        <header>
+            <h1><a href="/"><CMText /></a></h1>
+            <nav>
+                <a href="/hmmg">HMMG</a>
+                <a href="/streams">Livestreams</a>
+                <a href="/repos">Repositories</a>
+                <!--<a href="/shop">Merchandise</a>-->
+            </nav>
+        </header>
+        <main>
+            <slot />
+            <Footer start={2018} />
+        </main>
+    </div>
 </BaseLayout>
 
 <style>
+    .page {
+        max-width: 60rem;
+        margin: 0 auto;
+    }
+    .full {
+        max-width: none;
+    }
+    .content {
+        width: max-content;
+        max-width: 100%;
+    }
     header {
         text-align: center;
         padding-bottom: 1em;
     }
     nav {
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         justify-content: center;
         gap: 0.5em;
     }
@@ -58,9 +72,7 @@ const { title, lang = "en" } = Astro.props;
     body {
         font-family: var(--minecraft);
         font-size: 18px;
-        padding-left: 20%;
-        padding-right: 20%;
-        /* TODO: width max(80%, min-content) */
+        padding: 0 1rem;
     }
     :link,
     :visited {

@@ -18,7 +18,7 @@ lines.forEach((e) => {
 });
 ---
 
-<Layout title="Livestreams">
+<Layout title="Livestreams" width="content">
     <div id="streams">
         <Table {headers} {lines} />
     </div>
@@ -27,7 +27,8 @@ lines.forEach((e) => {
 <style>
     #streams {
         font-family: var(--unifont);
+    }
+    #streams :global(table) {
         width: max-content;
-        margin: 0 auto;
     }
 </style>

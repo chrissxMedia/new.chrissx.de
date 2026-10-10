@@ -11,22 +11,27 @@ const linkify = (c: string) =>
     c.startsWith("https://") ? `<a href="${c}">${c}</a>` : c;
 ---
 
-<table>
-    <thead>
-        {headers.map((h) => <th>{h}</th>)}
-    </thead>
-    <tbody>
-        {
-            lines.map((l) => (
-                <tr>
-                    {l.map(emojify).map(linkify).map((x) => (<td set:html={x} />))}
-                </tr>
-            ))
-        }
-    </tbody>
-</table>
+<div class="table-scroll" tabindex="0">
+    <table>
+        <thead>
+            <tr>{headers.map((h) => <th scope="col">{h}</th>)}</tr>
+        </thead>
+        <tbody>
+            {
+                lines.map((l) => (
+                    <tr>
+                        {l.map(emojify).map(linkify).map((x) => (<td set:html={x} />))}
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
+</div>
 
 <style>
+    .table-scroll {
+        overflow-x: auto;
+    }
     table {
         margin: 0.5em;
         padding: 0.5em;
@@ -34,7 +39,6 @@ const linkify = (c: string) =>
         border-radius: 0.25em;
     }
     td {
-        display: table-cell;
         vertical-align: inherit;
         padding-left: 0.25em;
         padding-right: 0.25em;

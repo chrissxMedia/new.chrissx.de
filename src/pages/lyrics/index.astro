@@ -7,7 +7,7 @@ const albums = await getCollection("albums");
 albums.sort((a, b) => b.data.release.localeCompare(a.data.release));
 ---
 
-<LyricsLayout>
+<LyricsLayout fullWidth>
     {albums.map((a) => <Album upc={a.id} {...a.data} />)}
 </LyricsLayout>
 

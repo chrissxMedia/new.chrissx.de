@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout title="Policies | chrissx Media">
-    <div class="policy-row">
+    <div>
         <div lang="en">
             <h2>Policies</h2>
         </div>
@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro"
         </div>
     </div>
 
-    <div class="policy-row">
+    <div>
         <div class="cbt" lang="en">
             <i>Disclaimer: These are policies, not contracts. If you think you need any kind of legally binding document,
                 please contact us at&nbsp;<a href="mailto:pi+legal@chrissx.de">pi+legal@chrissx.de</a>.</i>
@@ -24,7 +24,7 @@ import Layout from "../layouts/Layout.astro"
         </div>
     </div>
 
-    <div class="policy-row">
+    <div>
         <div class="cbt" lang="en">
             <h3>Reupload Policy v1.1</h3>
             <p>As we take some of our older content offline, mostly because we have to, not because we want to, reuploading
@@ -78,11 +78,11 @@ import Layout from "../layouts/Layout.astro"
 </Layout>
 
 <style>
-    .policy-row {
+    div:not([lang]) {
         display: flex;
         gap: 1em;
     }
-    .policy-row > div {
+    div > div {
         flex: 1 1 0%;
         min-width: 0;
         overflow-wrap: break-word;

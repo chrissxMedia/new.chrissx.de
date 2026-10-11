@@ -20,7 +20,7 @@ const { title, lang = "en", width = "normal" } = Astro.props;
 >
     <slot name="head" slot="head" />
     <link rel="alternate" type="application/rss+xml" title="chrissx Media notices" href="/notices/rss.xml" slot="head" />
-    <div class:list={["page", width]}>
+    <div class={width}>
         <header>
             <h1><a href="/"><CMText /></a></h1>
             <nav>
@@ -38,7 +38,7 @@ const { title, lang = "en", width = "normal" } = Astro.props;
 </BaseLayout>
 
 <style>
-    .page {
+    div {
         max-width: 60rem;
         margin: 0 auto;
     }

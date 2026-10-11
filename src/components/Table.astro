@@ -11,7 +11,7 @@ const linkify = (c: string) =>
     c.startsWith("https://") ? `<a href="${c}">${c}</a>` : c;
 ---
 
-<div class="table-scroll" tabindex="0">
+<div tabindex="0">
     <table>
         <thead>
             <tr>{headers.map((h) => <th scope="col">{h}</th>)}</tr>
@@ -29,7 +29,7 @@ const linkify = (c: string) =>
 </div>
 
 <style>
-    .table-scroll {
+    div {
         overflow-x: auto;
     }
     table {

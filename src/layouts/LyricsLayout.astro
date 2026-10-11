@@ -5,15 +5,15 @@ import FormatTabs from "../components/FormatTabs.astro";
 
 interface Props {
     title?: string;
-    fullWidth?: boolean;
+    width?: "normal" | "full";
 }
 
-let { title, fullWidth = false } = Astro.props;
+let { title, width } = Astro.props;
 const x = "chrissx Media Lyrics Department";
 title = title ? `${title} | ${x}` : x;
 ---
 
-<Layout {title} width={fullWidth ? "full" : "normal"}>
+<Layout {title} {width}>
     <p>
         All content displayed on this web page is the intellectual property of
         chrissx Media. All rights reserved. Do not distribute without written

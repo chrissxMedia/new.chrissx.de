@@ -1,4 +1,5 @@
 {
+  "name": "new.chrissx.de",
   "type": "module",
   "scripts": {
     "dev": "astro dev",

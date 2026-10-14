@@ -1,6 +1,5 @@
 ---
-import { BaseLayout, CMText, Footer } from "cmdesigns";
-import favicon from "../favicon.png";
+import { BaseLayout, CMText, Footer, cmLogoPng as cmLogo } from "cmdesigns";
 
 export interface Props {
     title: string;
@@ -13,7 +12,7 @@ const { title, lang = "en", width = "normal" } = Astro.props;
 
 <BaseLayout
     {lang}
-    {favicon}
+    favicon={cmLogo}
     {title}
     description="The official chrissx Media website"
     themecolor="#000000"

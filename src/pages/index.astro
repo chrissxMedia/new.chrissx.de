@@ -8,8 +8,7 @@ import twitterLogo from "simple-icons/icons/twitter.svg?url&no-inline";
 import mastodonLogo from "simple-icons/icons/mastodon.svg?url&no-inline";
 import githubLogo from "simple-icons/icons/github.svg?url&no-inline";
 import discordLogo from "simple-icons/icons/discord.svg?url&no-inline";
-// TODO: Move the Fux Games logo into cmdesigns.
-import fuxLogo from "../fux-games.png";
+import { fgLogoPng as fuxLogo } from "cmdesigns";
 
 const notices = (await getCollection("notices")).filter((x) => !x.data.archived);
 

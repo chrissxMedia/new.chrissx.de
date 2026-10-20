@@ -1,4 +1,6 @@
 ---
+import { LinkCard } from "cmdesigns";
+
 export interface Props {
     href: string;
     title?: string;
@@ -10,29 +12,18 @@ export interface Props {
 const { href, title, subtitle, image, rel } = Astro.props;
 ---
 
-<a href={href} rel={rel}>
+<LinkCard class="card" {href} {rel}>
     {image && <img src={image} alt="" width="48" height="48" loading="lazy" onerror="this.remove()" />}
     {title && <span><strong>{title}</strong>{subtitle && <small>{subtitle}</small>}</span>}
     <slot />
-</a>
+</LinkCard>
 
 <style>
-    a {
+    .card > :global(.content) {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        min-width: 0;
-        padding: 1rem;
-        border: 1px solid #333333;
-        border-radius: 0.8rem;
-        background: #0f0f0f;
-        color: #ffffff;
         font-family: var(--unifont);
-        text-decoration: none;
-        overflow-wrap: anywhere;
-    }
-    a:is(:hover, :focus-visible) {
-        background: #333333;
     }
     img {
         max-width: 100%;

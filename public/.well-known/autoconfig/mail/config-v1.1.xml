@@ -8,14 +8,14 @@
       <hostname>mail.chrissx.de</hostname>
       <port>993</port>
       <socketType>SSL</socketType>
-      <username>%EMAILLOCALPART%</username>
+      <username>%EMAILADDRESS%</username>
       <authentication>password-cleartext</authentication>
     </incomingServer>
     <outgoingServer type="smtp">
       <hostname>mail.chrissx.de</hostname>
       <port>465</port>
       <socketType>SSL</socketType>
-      <username>%EMAILLOCALPART%</username>
+      <username>%EMAILADDRESS%</username>
       <authentication>password-cleartext</authentication>
     </outgoingServer>
   </emailProvider>

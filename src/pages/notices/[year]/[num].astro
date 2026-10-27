@@ -13,11 +13,10 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout title={Astro.props.data.title}>
-    <meta
-        name="fediverse:creator"
-        content="@chrissx@mastodon.online"
-        slot="head"
-    />
+<Layout
+    title={Astro.props.data.title}
+    type="article"
+    fediverseCreator="@chrissx@mastodon.online"
+>
     <Notice {...Astro.props} mode="standalone" />
 </Layout>

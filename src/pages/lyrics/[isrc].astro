@@ -9,14 +9,19 @@ export async function getStaticPaths() {
 }
 
 const { isrc } = Astro.params;
-const tracks = (await getCollection("albums")).flatMap((a) => a.data.tracks);
-const track = tracks.find((t) => t.isrc.raw === isrc);
+const albums = await getCollection("albums");
+const album = albums.find((a) => a.data.tracks.some((t) => t.isrc.raw === isrc));
+const track = album?.data.tracks.find((t) => t.isrc.raw === isrc);
 
 if (!track) {
     return new Response("Track not found", { status: 404 });
 }
 ---
 
-<LyricsLayout title={track.name}>
+<LyricsLayout
+    title={track.name}
+    description={`${track.lyrics ? "Lyrics and track information" : "Track information"} for ${track.name} by ${track.artists.join(", ")}.`}
+    image={album?.data.cover}
+>
     <Track {...track} />
 </LyricsLayout>

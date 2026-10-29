@@ -16,6 +16,10 @@ if (!album) {
 }
 ---
 
-<LyricsLayout title={album.data.name}>
+<LyricsLayout
+    title={album.data.name}
+    description={`Tracks from ${album.data.name} by ${album.data.artists.join(", ")}. Released ${album.data.release}.`}
+    image={album.data.cover}
+>
     <Album {upc} {...album.data} />
 </LyricsLayout>

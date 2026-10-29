@@ -2,18 +2,25 @@
 import Layout from "./Layout.astro";
 import Search from "../components/Search.astro";
 import FormatTabs from "../components/FormatTabs.astro";
+import type { ComponentProps } from "astro/types";
 
-interface Props {
+interface Props extends Omit<ComponentProps<typeof Layout>, "title" | "width"> {
     title?: string;
     width?: "normal" | "full";
 }
 
-let { title, width } = Astro.props;
+let {
+    title,
+    width,
+    description = "Browse chrissx Media releases and song lyrics.",
+    ...seo
+} = Astro.props;
 const x = "chrissx Media Lyrics Department";
 title = title ? `${title} | ${x}` : x;
 ---
 
-<Layout {title} {width}>
+<Layout {title} {width} {description} {...seo}>
+    <slot name="head" slot="head" />
     <p>
         All content displayed on this web page is the intellectual property of
         chrissx Media. All rights reserved. Do not distribute without written

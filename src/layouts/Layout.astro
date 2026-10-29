@@ -1,21 +1,28 @@
 ---
 import { BaseLayout, CMText, Footer, cmLogoPng as cmLogo } from "cmdesigns";
+import type { ComponentProps } from "astro/types";
 
-export interface Props {
-    title: string;
+export interface Props extends Omit<
+    ComponentProps<typeof BaseLayout>,
+    "lang" | "favicon" | "themecolor" | "site"
+> {
     lang?: string;
     width?: "normal" | "full" | "content";
 }
 
-const { title, lang = "en", width = "normal" } = Astro.props;
+const { lang = "en", width = "normal", ...seo } = Astro.props;
 ---
 
 <BaseLayout
     {lang}
     favicon={cmLogo}
-    {title}
-    description="The official chrissx Media website"
+    site={{
+        name: "chrissx Media",
+        logoSource: cmLogo,
+        description: "The official chrissx Media website",
+    }}
     themecolor="#000000"
+    {...seo}
 >
     <slot name="head" slot="head" />
     <link rel="alternate" type="application/rss+xml" title="chrissx Media notices" href="/notices/rss.xml" slot="head" />

@@ -1,5 +1,5 @@
 ---
-import { BaseLayout, CMText, Footer, cmLogoPng as cmLogo } from "cmdesigns";
+import { BaseLayout, CMText, Footer, HCard, cmLogoPng as cmLogo } from "cmdesigns";
 import type { ComponentProps } from "astro/types";
 
 export interface Props extends Omit<
@@ -27,6 +27,12 @@ const { lang = "en", width = "normal", ...seo } = Astro.props;
     <slot name="head" slot="head" />
     <link rel="alternate" type="application/rss+xml" title="chrissx Media notices" href="/notices/rss.xml" slot="head" />
     <div class={width}>
+        <HCard
+            name="chrissx Media notices"
+            url="https://chrissx.de/"
+            fediverseHandle="notices@chrissx.de"
+            hidden
+        />
         <header>
             <h1><a href="/"><CMText /></a></h1>
             <nav>
